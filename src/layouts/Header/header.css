@@ -1,0 +1,84 @@
+.nft:hover .nft__menu, .search__icon:hover .search{
+    display: block;
+  }
+  
+  .nft__menu{
+    z-index: 1;
+    transform-origin: calc(20%) top;
+    animation: headerNotifyGrowth linear 0.2s;
+  }
+  
+  .nft__menu::before {
+    content: "";
+    position: absolute;
+    border-width: 22px 24px;
+    border-style: solid;
+    border-color: transparent transparent white transparent;
+    cursor: default;
+    top: -31px;
+    left: 10px;
+    z-index: 1;
+  }
+
+
+
+  .search{
+    z-index: 1;
+    transform-origin: calc(80%) top;
+    animation: headerNotifyGrowth linear 0.2s;
+  }
+
+  @-webkit-keyframes headerNotifyGrowth {
+    from {
+        opacity: 0;
+        transform: scale(0);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@-moz-keyframes headerNotifyGrowth {
+    from {
+        opacity: 0;
+        transform: scale(0);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@-ms-keyframes headerNotifyGrowth {
+    from {
+        opacity: 0;
+        transform: scale(0);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@-o-keyframes headerNotifyGrowth {
+    from {
+        opacity: 0;
+        transform: scale(0);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes headerNotifyGrowth {
+    from {
+        opacity: 0;
+        transform: scale(0);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
