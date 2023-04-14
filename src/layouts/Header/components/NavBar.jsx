@@ -12,7 +12,7 @@ import useFetch from "../../../hooks/useFetch";
 function NavBar() {
   let flag = false;
 
-  const ecosystems = useFetch("http://localhost:1337/api/ecosystems");
+  const ecosystems = useFetch(`${process.env.REACT_APP_DOMAIN}/api/ecosystems`);
   const listEcosystem = ecosystems && ecosystems?.data;
 
   const pathName = window.location.pathname;
@@ -27,7 +27,6 @@ function NavBar() {
   listEcosystem?.data.map((item) => {
     return listSlug.push(`/ecosystem/${item.attributes.Name.toLowerCase()}`);
   });
-  console.log(listSlug);
 
   flag = listSlug.includes(pathName) ? true : false;
 

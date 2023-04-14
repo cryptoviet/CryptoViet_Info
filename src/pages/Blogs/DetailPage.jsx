@@ -23,7 +23,6 @@ function DetailPage({ blogs }) {
     html: true,
   });
 
-  console.log(blog);
 
   return (
     <Layout>

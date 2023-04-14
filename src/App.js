@@ -6,18 +6,18 @@ import Ecosystem from "./pages/Analytics/components/pages/Ecosystem";
 import DetailPage from "./pages/Blogs/DetailPage";
 import HomePage from "./pages/Home/HomePage";
 
-import SlugAnalytics from "./pages/Analytics/components/SlugAnalytics";
 import ErrorUrl from "./components/Errors/ErrorUrl";
+import SearchPage from "./layouts/Header/components/SearchPage";
 import SlugEcosystem from "./pages/Analytics/components/pages/SlugEcosystem";
+import SlugAnalytics from "./pages/Analytics/components/SlugAnalytics";
 
 function App() {
-  const { loading, error, data } = useFetch(
-    "http://localhost:1337/api/posts?populate=*"
-  );
+  const url = process.env.REACT_APP_DOMAIN;
+  const { loading, error, data } = useFetch(`${url}/api/posts?populate=* `);
 
-  const categories = useFetch("http://localhost:1337/api/categories");
+  const categories = useFetch(`${url}/api/categories`);
 
-  const ecosystems = useFetch("http://localhost:1337/api/ecosystems");
+  const ecosystems = useFetch(`${url}/api/ecosystems`);
 
   if (loading)
     return (
@@ -68,6 +68,18 @@ function App() {
       path: "/analytics/:slug",
       element: (
         <SlugAnalytics
+          exact
+          blogs={data ? data : ""}
+          categories={categories ? categories : ""}
+        />
+      ),
+      children: [],
+    },
+
+    {
+      path: "/search",
+      element: (
+        <SearchPage
           exact
           blogs={data ? data : ""}
           categories={categories ? categories : ""}

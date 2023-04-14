@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { FaUserTie } from "react-icons/fa";
 import { BsFillCalendarEventFill } from "react-icons/bs";
 function Content({ blogs, categories }) {
+  console.log(categories);
   const listPost = blogs.data.map((blog) => {
     return {
       categories: blog.attributes.category?.data.attributes.Name,
@@ -26,7 +27,7 @@ function Content({ blogs, categories }) {
 
   return (
     <>
-      {categories?.data.data.map((category, idx) => (
+      {categories?.data.map((category, idx) => (
         <div>
           <h2 className="w-full font-bold">
             <span className=" pr-2 text-2xl">{category.attributes.Title}</span>

@@ -3,7 +3,7 @@ import { CgCornerDownRight } from "react-icons/cg";
 import { Link } from "react-router-dom";
 import useFetch from "../../../hooks/useFetch";
 function NavAnalytic() {
-  const ecosystems = useFetch("http://localhost:1337/api/ecosystems");
+  const ecosystems = useFetch(`${process.env.REACT_APP_DOMAIN}/api/ecosystems`);
   const listEcosystem = ecosystems && ecosystems?.data;
 
   const pathName = window.location.pathname;

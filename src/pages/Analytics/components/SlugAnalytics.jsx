@@ -12,7 +12,6 @@ function SlugAnalytics({ blogs, categories }) {
     return str.split("-").reverse().join("/");
   }
 
-  console.log(slug);
 
   const checkSlug = [
     "analytics/ecosystem",

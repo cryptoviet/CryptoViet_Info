@@ -1,7 +1,21 @@
-import React from "react";
+import React, { useState } from "react";
 import { RiSearchLine } from "react-icons/ri";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 function Search() {
+  const [, setKeywords] = useState("");
+  const navigate = useNavigate();
+
+  const search = useLocation().search;
+  const q = new URLSearchParams(search).get("q");
+
+  const handleSearch = (e) => {
+    let keywords = e.target.value;
+    setKeywords(keywords);
+    keywords.length > 0
+      ? navigate(`/search?q=${keywords.trim()}`)
+      : navigate("/search");
+  };
+
   return (
     <li className="search__icon">
       <Link
@@ -21,6 +35,8 @@ function Search() {
           type="search"
           className=" bg-white shadow-3xl py-2 pr-4 pl-4 rounded-2xl text-sm text-gray outline-none"
           placeholder="Search..."
+          onChange={handleSearch}
+          value={q}
         />
 
         <ul className=" mt-2 w-full bg-white shadow-3xl text-sm py-4 pr-10 pl-4 rounded-2xl">

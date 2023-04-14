@@ -4,8 +4,10 @@ import { FaTelegramPlane, FaFacebook, FaYoutube } from "react-icons/fa";
 import { HiDocumentMagnifyingGlass } from "react-icons/hi2";
 import useFetch from "../hooks/useFetch";
 function Sidebar() {
-  const { data } = useFetch("http://localhost:1337/api/posts?populate=*");
-  const categories = useFetch("http://localhost:1337/api/categories");
+  const { data } = useFetch(
+    `${process.env.REACT_APP_DOMAIN}/api/posts?populate=*`
+  );
+  const categories = useFetch(`${process.env.REACT_APP_DOMAIN}/api/categories`);
 
   const listPost = data?.data.map((blog) => {
     return {

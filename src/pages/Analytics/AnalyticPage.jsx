@@ -9,12 +9,12 @@ function AnalyticPage({ blogs, categories }) {
       <div className="container mx-auto mt-12 mb-40">
         <div className="lg:flex flex-row flex-none">
           <div className="lg:w-[75%] lg:mr-10 w-full">
-            <Content blogs={blogs} categories={categories} />
+            <Content blogs={blogs} categories={categories?.data} />
           </div>
 
-          <div className="lg:w-[25%] ">
+          {/* <div className="lg:w-[25%] ">
             <Sidebar />
-          </div>
+          </div> */}
         </div>
       </div>
     </Layout>
