@@ -1,5 +1,10 @@
 import React from "react";
-
+import {
+  FaFacebookF,
+  FaTelegramPlane,
+  FaTwitter,
+  FaYoutube,
+} from "react-icons/fa";
 function Footer() {
   return (
     <>
@@ -18,8 +23,27 @@ function Footer() {
         </div>
       </div>
       <div className="bg-white ">
-        <div className="container mx-auto py-4  text-text">
-          <img src="/footer.svg" className="w-1/3" alt="" />
+        <div className="container mx-auto py-4 justify-between grid lg:md-grid-cols-2 lg:grid-cols-2 item-center text-text">
+          <div className="lg:flex md:flex items-center gap-4">
+            <img
+              className="lg:w-1/3 md:w-1/3 w-2/4 mx-auto"
+              src="/Logo_header.svg"
+              alt=""
+            />
+            <span className="lg:block md:block hidden">
+              ©2017 CryptoViet. All Rights Reserved
+            </span>
+          </div>
+
+          <div className="flex lg:gap-4 md:gap-4 gap-8 font-bold mx-auto mt-2 lg:mr-0 md:mr-0">
+            <FaTelegramPlane />
+            <FaTwitter />
+            <FaFacebookF />
+            <FaYoutube />
+          </div>
+          <span className="lg:hidden md:hidden block font-semibold mx-auto mt-6">
+            ©2017 CryptoViet. All Rights Reserved
+          </span>
         </div>
       </div>
     </>

@@ -2,8 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { FaUserTie } from "react-icons/fa";
 import { BsFillCalendarEventFill } from "react-icons/bs";
-function Content({ blogs, categories }) {
-  console.log(categories);
+function Content({ blogs, categories, loading }) {
   const listPost = blogs.data.map((blog) => {
     return {
       categories: blog.attributes.category?.data.attributes.Name,
@@ -47,7 +46,7 @@ function Content({ blogs, categories }) {
                         <div className="h-[250px] hover__image w-full rounded-[8px] overflow-hidden">
                           <img
                             className="w-full  h-full object-cover"
-                            src={blog.image}
+                            src={loading ? "images/404.svg" : blog.image}
                             alt=""
                           />
                         </div>

@@ -46,6 +46,7 @@ function App() {
       element: (
         <AnalyticPage
           exact
+          loading={loading}
           blogs={data ? data : ""}
           categories={categories ? categories : ""}
         />

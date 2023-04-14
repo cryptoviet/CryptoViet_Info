@@ -27,7 +27,7 @@ function Ecosystem({ blogs, ecosystems }) {
     <Layout>
       <Container>
         <div className="lg:flex flex-row flex-none mt-10">
-          <div className="lg:w-[75%] w-full">
+          <div className="lg:w-[75%] w-full z-10">
             {ecosystems?.data?.data.map((item) => (
               <>
                 <div>
@@ -69,7 +69,9 @@ function Ecosystem({ blogs, ecosystems }) {
             <Sidebar />
           </div>
         </div>
+        <div className="blur__bg-head lg:block md:block hidden"></div>
       </Container>
+      <div className="blur__bg overflow-hidden lg:block md:block hidden"></div>
     </Layout>
   );
 }

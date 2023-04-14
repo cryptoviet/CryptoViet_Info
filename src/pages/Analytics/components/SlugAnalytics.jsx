@@ -12,7 +12,6 @@ function SlugAnalytics({ blogs, categories }) {
     return str.split("-").reverse().join("/");
   }
 
-
   const checkSlug = [
     "analytics/ecosystem",
     "analytics/airdrop",
@@ -42,7 +41,7 @@ function SlugAnalytics({ blogs, categories }) {
       <Container>
         <div className="mt-10">
           <h2 className="w-full font-bold">
-            <span className="pr-2 text-3xl capitalize">
+            <span className="pr-2 text-3xl capitalize relative z-10">
               {slug === "nft" ? "NFTs" : slug}
             </span>
           </h2>
@@ -53,7 +52,7 @@ function SlugAnalytics({ blogs, categories }) {
                   .filter((eco) => eco.categories.toLowerCase().includes(slug))
                   .map((blog) => (
                     <>
-                      <div className="mt-2.5 mb-12 ">
+                      <div className="mt-2.5 mb-12 z-10">
                         <Link to={`/blogs/${blog.slug}`}>
                           <div className="h-[250px] hover__image w-full rounded-[8px] overflow-hidden">
                             <img
@@ -92,7 +91,9 @@ function SlugAnalytics({ blogs, categories }) {
             )}
           </div>
         </div>
+        <div className="blur__bg-head lg:block md:block hidden"></div>
       </Container>
+      <div className="blur__bg overflow-hidden lg:block md:block hidden"></div>
     </Layout>
   );
 }

@@ -31,12 +31,13 @@ function LatestPost({ blogs }) {
     <div className="bg-black text-white relative latest__posts">
       <div className="container mx-auto lg:pt-28 md:pt-48 pt-64 pb-10">
         <div className="mb-12">
-          <h1 className="font-bold text-[54px] text-center">Latest Posts</h1>
-          <p className="text-center lg:w-[55%] w-full mx-auto">
-            Lorem Ipsum is simply dummy text of the printing and typesetting
-            industry. Lorem Ipsum has been the industry's standard dummy text
-            ever since the 1500s, when an unknown printer took a galley of type
-            and scrambled it to make a type specimen book.
+          <h1 className="font-bold text-[54px] text-center">Analytics</h1>
+          <p className="text-center lg:w-[65%] w-full mx-auto">
+            Trang phân tích kiến thức Crypto - Cung cấp các bài viết phân tích
+            chuyên sâu về công nghệ Blockchain, tiền mã hóa, đầu tư, các dự án
+            tiền điện tử tiềm năng được nghiên cứu bởi những người có trình độ
+            chuyên môn cao và nhiều kinh nghiệm trong lĩnh vực, đảm bảo tính
+            chính xác và độ tin cậy của thông tin.
           </p>
         </div>
 
@@ -68,55 +69,59 @@ function LatestPost({ blogs }) {
           modules={[Navigation, Autoplay]}
         >
           {blogs?.data.map((blog) => (
-            <SwiperSlide>
-              <div
-                data-aos="fade-up"
-                data-aos-anchor-placement="top-center"
-                className="mb-8"
-              >
-                <Link to={`/blogs/${blog?.attributes.slug}`}>
-                  <div className="rounded-xl hover__image relative overflow-hidden   h-[235px]">
-                    <img
-                      className="h-full w-full object-cover"
-                      src={
-                        process.env.REACT_APP_DOMAIN +
-                        blog?.attributes.images.data[0].attributes.url
-                      }
-                      alt=""
-                    />
-                    <span className="text absolute top-[45%]">Detail</span>
+            <>
+              {blog.attributes.category.data.attributes.slug === "airdrop" && (
+                <SwiperSlide>
+                  <div
+                    data-aos="fade-up"
+                    data-aos-anchor-placement="top-center"
+                    className="mb-8"
+                  >
+                    <Link to={`/blogs/${blog?.attributes.slug}`}>
+                      <div className="rounded-xl hover__image relative overflow-hidden   h-[235px]">
+                        <img
+                          className="h-full w-full object-cover"
+                          src={
+                            process.env.REACT_APP_DOMAIN +
+                            blog?.attributes.images.data[0].attributes.url
+                          }
+                          alt=""
+                        />
+                        <span className="text absolute top-[45%]">Detail</span>
+                      </div>
+                      <h2 className="uppercase lg:h-14 md:h-14 hover:text-item py-3 mt-2 mb-2 text-white font-bold line-clamp-2">
+                        {blog?.attributes.title}
+                      </h2>
+                    </Link>
+                    <p className="mb-4 text-white pointer-events-none cursor-auto line-clamp-3">
+                      {blog?.attributes.description}
+                    </p>
+                    <div className="flex justify-between">
+                      <span className="flex pb-2 leading-[14px] font-light  text-sm text-white">
+                        <FaUserTie className="mr-1" />
+                        <span className="block">
+                          {blog?.attributes.author.data.attributes.FullName}
+                        </span>
+                      </span>
+                      <span className="font-light flex pb-2 leading-[14px] text-sm text-white">
+                        <BsFillCalendarEventFill className="mr-1" />
+                        <span className="block">
+                          {formatDate(
+                            reverseString(
+                              blog.attributes.createdAt.substring(0, 10)
+                            )
+                          )}
+                        </span>
+                      </span>
+                    </div>
                   </div>
-                  <h2 className="uppercase lg:h-14 md:h-14 hover:text-item py-3 mt-2 mb-2 text-white font-bold line-clamp-2">
-                    {blog?.attributes.title}
-                  </h2>
-                </Link>
-                <p className="mb-4 text-white pointer-events-none cursor-auto line-clamp-3">
-                  {blog?.attributes.description}
-                </p>
-                <div className="flex justify-between">
-                  <span className="flex pb-2 leading-[14px] font-light  text-sm text-white">
-                    <FaUserTie className="mr-1" />
-                    <span className="block">
-                      {blog?.attributes.author.data.attributes.FullName}
-                    </span>
-                  </span>
-                  <span className="font-light flex pb-2 leading-[14px] text-sm text-white">
-                    <BsFillCalendarEventFill className="mr-1" />
-                    <span className="block">
-                      {formatDate(
-                        reverseString(
-                          blog.attributes.createdAt.substring(0, 10)
-                        )
-                      )}
-                    </span>
-                  </span>
-                </div>
-              </div>
-            </SwiperSlide>
+                </SwiperSlide>
+              )}
+            </>
           ))}
         </Swiper>
 
-        <Link className="flex text-text">
+        <Link to="/analytics" className="flex text-text">
           <span className="bg-white rounded-lg hover:bg-main hover:text-white transition-all py-2 mx-auto px-4 font-bold text-sm">
             GO TO RESEARCH
           </span>

@@ -39,18 +39,18 @@ function SlugEcosystem({ blogs, ecosystems }) {
   return (
     <Layout>
       <Container>
-        <div className="mt-10">
-          <h2 className="w-full font-bold">
+        <div className="mt-10 ">
+          <h2 className="w-full font-bold relative z-10">
             <span className="pr-2 text-3xl capitalize">{slug}</span>
           </h2>
-          <div className="w-full">
+          <div className="w-full ">
             {checkSlug.includes(slug) ? (
               <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-4 lg:pr-10 md:pr-10">
                 {listPost
                   .filter((eco) => eco.ecosystem.toLowerCase().includes(slug))
                   .map((blog) => (
                     <>
-                      <div className="mt-2.5 mb-12 ">
+                      <div className="mt-2.5 mb-12 z-10">
                         <Link to={`/blogs/${blog.slug}`}>
                           <div className="h-[250px] hover__image w-full rounded-[8px] overflow-hidden">
                             <img
@@ -88,7 +88,9 @@ function SlugEcosystem({ blogs, ecosystems }) {
               <ErrorPage />
             )}
           </div>
+          <div className="blur__bg-head lg:block md:block hidden"></div>
         </div>
+        <div className="blur__bg overflow-hidden lg:block md:block hidden"></div>
       </Container>
     </Layout>
   );

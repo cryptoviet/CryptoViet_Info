@@ -1,12 +1,12 @@
 import React, { useState } from "react";
 import { RiSearchLine } from "react-icons/ri";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 function Search() {
-  const [, setKeywords] = useState("");
+  const [keywords, setKeywords] = useState("");
   const navigate = useNavigate();
 
-  const search = useLocation().search;
-  const q = new URLSearchParams(search).get("q");
+  // const search = useLocation().search;
+  // const q = new URLSearchParams(search).get("q");
 
   const handleSearch = (e) => {
     let keywords = e.target.value;
@@ -36,7 +36,7 @@ function Search() {
           className=" bg-white shadow-3xl py-2 pr-4 pl-4 rounded-2xl text-sm text-gray outline-none"
           placeholder="Search..."
           onChange={handleSearch}
-          value={q}
+          value={keywords}
         />
 
         <ul className=" mt-2 w-full bg-white shadow-3xl text-sm py-4 pr-10 pl-4 rounded-2xl">
