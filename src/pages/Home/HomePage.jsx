@@ -4,6 +4,7 @@ import Layout from "../../layouts/Layout";
 import Banner from "./components/Banner";
 import LatestPost from "./components/LatestPost";
 import Onchain from "./components/Onchain";
+import AboutUs from "./components/AboutUs";
 
 // const POSTS = gql`
 //   query GetListPost {
@@ -28,6 +29,7 @@ function HomePage({ blogs }) {
         <Banner />
         <LatestPost blogs={blogs} />
         <Onchain />
+        <AboutUs />
       </div>
     </Layout>
   );
