@@ -11,7 +11,7 @@ function Sidebar() {
 
   const listPost = data?.data.map((blog) => {
     return {
-      categories: blog.attributes.category?.data.attributes.Name,
+      categories: blog?.attributes?.category?.data?.attributes?.Name,
       title: blog.attributes.title,
       content: blog.attributes.content,
       description: blog.attributes.description,
@@ -21,7 +21,7 @@ function Sidebar() {
         blog?.attributes.images.data[0].attributes.url,
 
       author: blog.attributes.author.data,
-      ecosystem: blog.attributes.ecosystem.data.attributes.Name,
+      ecosystem: blog.attributes?.ecosystem?.data?.attributes?.Name,
     };
   });
 
@@ -46,7 +46,7 @@ function Sidebar() {
               .map((blog) => (
                 <li className="py-[2px]">
                   <Link
-                    to={`/blogs/${blog.slug}`}
+                    to={`/${blog.slug}`}
                     className="hover:text-main transition-all"
                   >
                     <div className="flex item-center gap-2">
@@ -71,8 +71,10 @@ function Sidebar() {
         <div className="flex gap-2 flex-wrap mt-4 text-sm">
           {categories?.data?.data.map((category) => {
             const postsInCategory =
-              listPost?.filter((post) =>
-                post?.categories.includes(category.attributes.Name)
+              listPost?.filter(
+                (post) =>
+                  post.categories !== undefined &&
+                  post?.categories.includes(category.attributes.Name)
               ) || [];
             return (
               <div key={category.id} className="my-2">

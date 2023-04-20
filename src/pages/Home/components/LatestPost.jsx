@@ -70,52 +70,59 @@ function LatestPost({ blogs }) {
         >
           {blogs?.data.map((blog) => (
             <>
-              {blog.attributes.category.data.attributes.slug === "airdrop" && (
-                <SwiperSlide>
-                  <div
-                    data-aos="fade-up"
-                    data-aos-anchor-placement="top-center"
-                    className="mb-8"
-                  >
-                    <Link to={`/blogs/${blog?.attributes.slug}`}>
-                      <div className="rounded-xl hover__image relative overflow-hidden   h-[235px]">
-                        <img
-                          className="h-full w-full object-cover"
-                          src={
-                            process.env.REACT_APP_DOMAIN +
-                            blog?.attributes.images.data[0].attributes.url
-                          }
-                          alt=""
-                        />
-                        <span className="text absolute top-[45%]">Detail</span>
+              {blog.attributes.category.data !== null && (
+                <>
+                  {blog.attributes.category.data.attributes.slug ===
+                    "ecosystem" && (
+                    <SwiperSlide>
+                      <div
+                        data-aos="fade-up"
+                        data-aos-anchor-placement="top-center"
+                        className="mb-8"
+                      >
+                        <Link to={`/${blog?.attributes.slug}`}>
+                          <div className="rounded-xl hover__image relative overflow-hidden   h-[235px]">
+                            <img
+                              className="h-full w-full object-cover"
+                              src={
+                                process.env.REACT_APP_DOMAIN +
+                                blog?.attributes.images.data[0].attributes.url
+                              }
+                              alt=""
+                            />
+                            <span className="text absolute top-[45%]">
+                              Detail
+                            </span>
+                          </div>
+                          <h2 className="uppercase lg:h-14 md:h-14 hover:text-item py-3 mt-2 mb-2 text-white font-bold line-clamp-2">
+                            {blog?.attributes.title}
+                          </h2>
+                        </Link>
+                        <p className="mb-4 text-white pointer-events-none cursor-auto line-clamp-3">
+                          {blog?.attributes.description}
+                        </p>
+                        <div className="flex justify-between">
+                          <span className="flex pb-2 leading-[14px] font-light  text-sm text-white">
+                            <FaUserTie className="mr-1" />
+                            <span className="block">
+                              {blog?.attributes.author.data.attributes.FullName}
+                            </span>
+                          </span>
+                          <span className="font-light flex pb-2 leading-[14px] text-sm text-white">
+                            <BsFillCalendarEventFill className="mr-1" />
+                            <span className="block">
+                              {formatDate(
+                                reverseString(
+                                  blog.attributes.createdAt.substring(0, 10)
+                                )
+                              )}
+                            </span>
+                          </span>
+                        </div>
                       </div>
-                      <h2 className="uppercase lg:h-14 md:h-14 hover:text-item py-3 mt-2 mb-2 text-white font-bold line-clamp-2">
-                        {blog?.attributes.title}
-                      </h2>
-                    </Link>
-                    <p className="mb-4 text-white pointer-events-none cursor-auto line-clamp-3">
-                      {blog?.attributes.description}
-                    </p>
-                    <div className="flex justify-between">
-                      <span className="flex pb-2 leading-[14px] font-light  text-sm text-white">
-                        <FaUserTie className="mr-1" />
-                        <span className="block">
-                          {blog?.attributes.author.data.attributes.FullName}
-                        </span>
-                      </span>
-                      <span className="font-light flex pb-2 leading-[14px] text-sm text-white">
-                        <BsFillCalendarEventFill className="mr-1" />
-                        <span className="block">
-                          {formatDate(
-                            reverseString(
-                              blog.attributes.createdAt.substring(0, 10)
-                            )
-                          )}
-                        </span>
-                      </span>
-                    </div>
-                  </div>
-                </SwiperSlide>
+                    </SwiperSlide>
+                  )}
+                </>
               )}
             </>
           ))}

@@ -13,15 +13,15 @@ function SlugAnalytics({ blogs, categories }) {
   }
 
   const checkSlug = [
-    "analytics/ecosystem",
-    "analytics/airdrop",
-    "analytics/nft",
-    "analytics/knowledge",
-    "analytics/ama",
+    "/vi/analytics/he-sinh-thai",
+    "/vi/analytics/airdrop",
+    "/vi/analytics/nft",
+    "/vi/analytics/knowledge",
+    "/vi/analytics/ama",
   ];
   const listPost = blogs.data.map((blog) => {
     return {
-      categories: blog.attributes.category?.data.attributes.Name,
+      categories: blog.attributes?.category?.data?.attributes?.Name,
       title: blog.attributes.title,
       content: blog.attributes.content,
       description: blog.attributes.description,
@@ -32,28 +32,35 @@ function SlugAnalytics({ blogs, categories }) {
 
       author: blog.attributes.author?.data.attributes.FullName,
       ecosystem: blog.attributes.ecosystem.data.attributes.Name,
+      
       createdAt: blog.attributes.createdAt,
     };
   });
 
+  console.log(listPost);
+
   return (
     <Layout>
       <Container>
-        <div className="mt-10">
+        <div className="mt-10 min-h-[518px]">
           <h2 className="w-full font-bold">
             <span className="pr-2 text-3xl capitalize relative z-10">
               {slug === "nft" ? "NFTs" : slug}
             </span>
           </h2>
           <div className="w-full">
-            {checkSlug.includes(`analytics/${slug}`) ? (
+            {checkSlug.includes(`/vi/analytics/${slug}`) ? (
               <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-4 lg:pr-10 md:pr-10">
                 {listPost
-                  .filter((eco) => eco.categories.toLowerCase().includes(slug))
+                  .filter(
+                    (eco) =>
+                      eco.categories !== undefined &&
+                      eco.categories.toLowerCase().includes(slug)
+                  )
                   .map((blog) => (
                     <>
                       <div className="mt-2.5 mb-12 z-10">
-                        <Link to={`/blogs/${blog.slug}`}>
+                        <Link to={`/${blog.slug}`}>
                           <div className="h-[250px] hover__image w-full rounded-[8px] overflow-hidden">
                             <img
                               className="w-full  h-full object-cover"

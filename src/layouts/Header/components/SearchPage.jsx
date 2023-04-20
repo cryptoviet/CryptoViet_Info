@@ -48,7 +48,7 @@ function SearchPage({ blogs }) {
                     {arr.map((blog) => (
                       <>
                         <div className="mt-2.5 mb-12 z-10">
-                          <Link to={`/blogs/${blog.attributes.slug}`}>
+                          <Link to={`/${blog.attributes.slug}`}>
                             <div className="h-[250px] hover__image w-full rounded-[8px] overflow-hidden">
                               <img
                                 className="w-full  h-full object-cover"

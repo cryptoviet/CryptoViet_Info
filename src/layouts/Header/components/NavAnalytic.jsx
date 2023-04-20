@@ -6,6 +6,8 @@ function NavAnalytic() {
   const ecosystems = useFetch(`${process.env.REACT_APP_DOMAIN}/api/ecosystems`);
   const listEcosystem = ecosystems && ecosystems?.data;
 
+  const linkTo = "/vi/analytics";
+
   const pathName = window.location.pathname;
   return (
     <ul className="flex item-center gap-4 ml-6">
@@ -14,9 +16,9 @@ function NavAnalytic() {
       </li>
       <li className="font-semibold nft text-base  transition-all">
         <Link
-          to="/analytics/ecosystem"
+          to={`${linkTo}/he-sinh-thai`}
           className={`hover:text-main  relative z-10  ${
-            pathName === "/analytics/ecosystem" && "text-main"
+            pathName === `${linkTo}/he-sinh-thai` && "text-main"
           }`}
         >
           Hệ sinh thái
@@ -26,7 +28,7 @@ function NavAnalytic() {
             {listEcosystem?.data.map((item) => (
               <li className="mb-2">
                 <Link
-                  to={`/ecosystem/${item.attributes.slug}`}
+                  to={`/vi/analytics/he-sinh-thai/${item.attributes.slug}`}
                   className="hover:text-main "
                 >
                   {item.attributes.Name}
@@ -38,9 +40,9 @@ function NavAnalytic() {
       </li>
       <li className="font-semibold text-base hover:text-main transition-all">
         <Link
-          to="/analytics/airdrop"
+          to={`${linkTo}/airdrop`}
           className={`hover:text-main ${
-            pathName === "/analytics/airdrop" && "text-main"
+            pathName === "/vi/analytics/airdrop" && "text-main"
           }`}
         >
           Airdrop
@@ -49,9 +51,9 @@ function NavAnalytic() {
 
       <li className="font-semibold relative z-10 nft text-base transition-all">
         <Link
-          to="/analytics/nft"
+          to={`${linkTo}/nft`}
           className={`hover:text-main  relative z-10 ${
-            pathName === "/analytics/nft" && "text-main"
+            pathName === "/vi/analytics/nft" && "text-main"
           }`}
         >
           NFTs
@@ -71,9 +73,9 @@ function NavAnalytic() {
       <li className="font-semibold text-base hover:text-main transition-all">
         <Link
           className={`hover:text-main ${
-            pathName === "/analytics/knowledge" && "text-main"
+            pathName === "/vi/analytics/knowledge" && "text-main"
           }`}
-          to="/analytics/knowledge"
+          to={`${linkTo}/knowledge`}
         >
           Kiến thức
         </Link>
@@ -82,9 +84,9 @@ function NavAnalytic() {
       <li className="font-semibold text-base hover:text-main transition-all">
         <Link
           className={`hover:text-main ${
-            pathName === "/analytics/ama" && "text-main"
+            pathName === `${linkTo}/ama` && "text-main"
           }`}
-          to="/analytics/ama"
+          to={`${linkTo}/ama`}
         >
           AMA
         </Link>

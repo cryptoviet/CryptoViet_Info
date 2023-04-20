@@ -1,4 +1,8 @@
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import {
+  createBrowserRouter,
+  Navigate,
+  RouterProvider,
+} from "react-router-dom";
 import useFetch from "./hooks/useFetch";
 import "./index.css";
 import AnalyticPage from "./pages/Analytics/AnalyticPage";
@@ -10,6 +14,8 @@ import ErrorUrl from "./components/Errors/ErrorUrl";
 import SearchPage from "./layouts/Header/components/SearchPage";
 import SlugEcosystem from "./pages/Analytics/components/pages/SlugEcosystem";
 import SlugAnalytics from "./pages/Analytics/components/SlugAnalytics";
+import CVEcosystem from "./pages/CV_Ecosystem/CVEcosystem";
+import SlugCV from "./pages/CV_Ecosystem/components/SlugCV";
 
 function App() {
   const url = process.env.REACT_APP_DOMAIN;
@@ -26,23 +32,30 @@ function App() {
       </p>
     );
   if (error) return <p>Error...</p>;
+  console.log(data);
 
   const router = createBrowserRouter([
     {
       path: "/",
+      element: <Navigate to="/vi" />,
+      errorElement: <ErrorUrl />,
+      children: [],
+    },
+    {
+      path: "/vi",
       element: <HomePage blogs={data ? data : ""} />,
       errorElement: <ErrorUrl />,
       children: [],
     },
 
     {
-      path: "blogs/:slug",
+      path: "/:slug",
       element: <DetailPage blogs={data ? data : ""} exact />,
       children: [],
     },
 
     {
-      path: "/analytics",
+      path: "/vi/analytics",
       element: (
         <AnalyticPage
           exact
@@ -55,23 +68,11 @@ function App() {
     },
 
     {
-      path: "/analytics/ecosystem",
+      path: "/vi/analytics/he-sinh-thai",
       element: (
         <Ecosystem
           blogs={data ? data : ""}
           ecosystems={ecosystems ? ecosystems : ""}
-        />
-      ),
-      children: [],
-    },
-
-    {
-      path: "/analytics/:slug",
-      element: (
-        <SlugAnalytics
-          exact
-          blogs={data ? data : ""}
-          categories={categories ? categories : ""}
         />
       ),
       children: [],
@@ -90,7 +91,7 @@ function App() {
     },
 
     {
-      path: "/analytics/:slug",
+      path: "vi/analytics/:slug",
       element: (
         <SlugAnalytics
           blogs={data ? data : ""}
@@ -101,13 +102,25 @@ function App() {
     },
 
     {
-      path: "/ecosystem/:slug",
+      path: "vi/analytics/he-sinh-thai/:slug",
       element: (
         <SlugEcosystem
           blogs={data ? data : ""}
           ecosystems={ecosystems ? ecosystems : ""}
         />
       ),
+      children: [],
+    },
+
+    {
+      path: "vi/he-sinh-thai-cryptoviet/:slug",
+      element: <SlugCV blogs={data ? data : ""} />,
+      children: [],
+    },
+
+    {
+      path: "vi/he-sinh-thai-cryptoviet",
+      element: <CVEcosystem blogs={data ? data : ""} />,
       children: [],
     },
   ]);

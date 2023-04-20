@@ -1,8 +1,9 @@
 import React from "react";
-import { Link } from "react-router-dom";
-import { FaUserTie } from "react-icons/fa";
 import { BsFillCalendarEventFill } from "react-icons/bs";
-function Content({ blogs, categories, loading }) {
+import { FaUserTie } from "react-icons/fa";
+import { Link } from "react-router-dom";
+
+function Content({ blogs, cvEcosystem }) {
   const listPost = blogs.data.map((blog) => {
     return {
       categories: blog.attributes?.category?.data?.attributes?.Name,
@@ -15,8 +16,8 @@ function Content({ blogs, categories, loading }) {
         blog?.attributes.images.data[0].attributes.url,
 
       author: blog.attributes.author?.data.attributes.FullName,
-
       createdAt: blog.attributes.createdAt,
+      cv_ecosystem: blog.attributes?.cv_ecosystem?.data?.attributes?.Name,
     };
   });
 
@@ -26,29 +27,30 @@ function Content({ blogs, categories, loading }) {
 
   return (
     <>
-      {categories?.data.map((category, idx) => (
+      {cvEcosystem?.data?.data.map((ecosystem, idx) => (
         <div>
           <h2 className="w-full font-bold">
-            <span className=" pr-2 text-2xl">{category.attributes.Title}</span>
+            <span className=" pr-2 text-2xl">{ecosystem.attributes.Name}</span>
           </h2>
           <div className="mt-6 flex lg:flex-row md:flex-row flex-col gap-5">
             {listPost
               .filter(
                 (cat) =>
-                  cat.categories !== null &&
-                  cat?.categories === category.attributes.Name
+                  cat.cv_ecosystem !== undefined &&
+                  cat?.cv_ecosystem === ecosystem.attributes.Name
               )
               .reverse()
               .slice(0, 1)
               .map((blog) => (
                 <>
-                  {blog.categories === category.attributes.Name && (
+                  {/* {console.log(blog)} */}
+                  {blog.cv_ecosystem === ecosystem.attributes.Name && (
                     <div className="mt-2.5 lg:w-[50%] mb-12 md:lg:w-[50%]">
                       <Link to={`/${blog.slug}`}>
                         <div className="h-[250px] hover__image w-full rounded-[8px] overflow-hidden">
                           <img
                             className="w-full  h-full object-cover"
-                            src={loading ? "images/404.svg" : blog.image}
+                            src={blog.image}
                             alt=""
                           />
                         </div>
@@ -83,7 +85,7 @@ function Content({ blogs, categories, loading }) {
                 .filter(
                   (cat) =>
                     cat.categories !== null &&
-                    cat?.categories === category.attributes.Name
+                    cat?.categories === ecosystem.attributes.Name
                 )
                 .reverse()
                 .slice(1, 4)

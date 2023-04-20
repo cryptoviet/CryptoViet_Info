@@ -4,7 +4,6 @@ import { Link, useParams } from "react-router-dom";
 import ErrorPage from "../../components/ErrorPage";
 import Sidebar from "../../components/Sidebar";
 import Layout from "../../layouts/Layout";
-import Comment from "./components/Comment";
 function DetailPage({ blogs }) {
   function reverseString(str) {
     return str.split("-").reverse().join("/");
@@ -23,7 +22,6 @@ function DetailPage({ blogs }) {
     html: true,
   });
 
-
   return (
     <Layout>
       <div className="container mx-auto mb-40">
@@ -38,10 +36,18 @@ function DetailPage({ blogs }) {
                     </h3>
                   </header>
                   <Link
-                    to={`/analytics/${blog.attributes.category.data.attributes.slug}`}
+                    to={`/vi/analytics/${
+                      blog.attributes.category.data?.attributes?.slug !==
+                      undefined
+                        ? blog.attributes?.category?.data?.attributes?.slug
+                        : ""
+                    }`}
                   >
                     <span className="bg-main hover:bg-item transition-all rounded-xl text-white text-sm px-2 py-1">
-                      {blog.attributes.category.data.attributes.Title}
+                      {blog.attributes?.category?.data?.attributes?.Title !==
+                      undefined
+                        ? blog.attributes?.category?.data?.attributes?.Title
+                        : "Analytics"}
                     </span>
                   </Link>
                   <p className="font-semibold mt-10">
@@ -49,6 +55,18 @@ function DetailPage({ blogs }) {
                     - {}
                     {reverseString(blog.attributes.createdAt.substring(0, 10))}
                   </p>
+
+                  <p className="font-base italic my-10">
+                    {blog.attributes.description}
+                  </p>
+                  <img
+                    className="h-auto w-full object-contain"
+                    src={
+                      process.env.REACT_APP_DOMAIN +
+                      blog?.attributes.images.data[0].attributes.url
+                    }
+                    alt=""
+                  />
                   <section
                     className="post__detail"
                     dangerouslySetInnerHTML={{
@@ -58,7 +76,7 @@ function DetailPage({ blogs }) {
                 </article>
               </div>
 
-              <Comment />
+              {/* <Comment /> */}
             </div>
 
             <div className="lg:w-[25%] ">

@@ -1,23 +1,21 @@
 import React from "react";
-import { Link, useParams } from "react-router-dom";
-import { FaUserTie } from "react-icons/fa";
+import ErrorPage from "../../../components/ErrorPage";
 import { BsFillCalendarEventFill } from "react-icons/bs";
-import Layout from "../../../../layouts/Layout";
-import ErrorPage from "../../../../components/ErrorPage";
-import Container from "../../../../components/Container";
+import { FaUserTie } from "react-icons/fa";
+import { Link, useParams } from "react-router-dom";
+import Layout from "../../../layouts/Layout";
+import Container from "../../../components/Container";
 
-function SlugEcosystem({ blogs, ecosystems }) {
+function SlugCV({ blogs }) {
   const { slug } = useParams();
-
   function reverseString(str) {
     return str.split("-").reverse().join("/");
   }
 
-  let checkSlug = [];
-
-  ecosystems?.data.data.map((item) => {
-    return checkSlug.push(item.attributes.Name.toLowerCase());
-  });
+  const checkSlug = [
+    "/vi/he-sinh-thai-cryptoviet/crypto-viet-ventures",
+    "/vi/he-sinh-thai-cryptoviet/grindy-technologies",
+  ];
 
   const listPost = blogs.data.map((blog) => {
     return {
@@ -32,25 +30,33 @@ function SlugEcosystem({ blogs, ecosystems }) {
 
       author: blog.attributes.author?.data.attributes.FullName,
       ecosystem: blog.attributes.ecosystem.data.attributes.Name,
+      cv_ecosystem: blog.attributes?.cv_ecosystem?.data?.attributes?.Name,
+      slug_cv: blog.attributes?.cv_ecosystem?.data?.attributes?.slug,
       createdAt: blog.attributes.createdAt,
     };
   });
+
+  console.log(listPost);
 
   return (
     <Layout>
       <Container>
         <div className="mt-10 min-h-[518px]">
-          <h2 className="w-full font-bold relative z-10">
-            <span className="pr-2 text-3xl capitalize">{slug}</span>
+          <h2 className="w-full font-bold">
+            <span className="pr-2 text-3xl capitalize relative z-10">
+              {slug === "crypto-viet-ventures"
+                ? "CryptoViet Ventures"
+                : slug.replace("-", " ")}
+            </span>
           </h2>
-          <div className="w-full ">
-            {checkSlug.includes(slug) ? (
+          <div className="w-full">
+            {checkSlug.includes(`/vi/he-sinh-thai-cryptoviet/${slug}`) ? (
               <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-4 lg:pr-10 md:pr-10">
                 {listPost
                   .filter(
                     (eco) =>
-                      eco.ecosystem !== undefined &&
-                      eco.ecosystem.toLowerCase().includes(slug)
+                      eco.slug_cv !== undefined &&
+                      eco.slug_cv.toLowerCase().includes(slug)
                   )
                   .map((blog) => (
                     <>
@@ -92,12 +98,12 @@ function SlugEcosystem({ blogs, ecosystems }) {
               <ErrorPage />
             )}
           </div>
-          <div className="blur__bg-head lg:block md:block hidden"></div>
         </div>
-        <div className="blur__bg overflow-hidden lg:block md:block hidden"></div>
+        <div className="blur__bg-head lg:block md:block hidden"></div>
       </Container>
+      <div className="blur__bg overflow-hidden lg:block md:block hidden"></div>
     </Layout>
   );
 }
 
-export default SlugEcosystem;
+export default SlugCV;

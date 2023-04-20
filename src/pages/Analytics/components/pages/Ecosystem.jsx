@@ -9,7 +9,7 @@ function Ecosystem({ blogs, ecosystems }) {
 
   const listPost = blogs.data.map((blog) => {
     return {
-      categories: blog.attributes.category?.data.attributes.Name,
+      categories: blog.attributes?.category?.data?.attributes?.Name,
       title: blog.attributes.title,
       content: blog.attributes.content,
       description: blog.attributes.description,
@@ -19,7 +19,7 @@ function Ecosystem({ blogs, ecosystems }) {
         blog?.attributes.images.data[0].attributes.url,
 
       author: blog.attributes.author.data,
-      ecosystem: blog.attributes.ecosystem.data.attributes.Name,
+      ecosystem: blog.attributes?.ecosystem?.data?.attributes?.Name,
     };
   });
 
@@ -37,13 +37,15 @@ function Ecosystem({ blogs, ecosystems }) {
                 </div>
                 <div className="grid lg:grid-cols-2 md:grid-cols-2 grid-cols-1 gap-4 lg:pr-10 md:pr-10">
                   {listPost
-                    .filter((eco) =>
-                      eco.ecosystem.includes(item.attributes.Name)
+                    .filter(
+                      (eco) =>
+                        eco.ecosystem !== undefined &&
+                        eco.ecosystem.includes(item.attributes.Name)
                     )
                     .slice(0, 2)
                     .map((blog) => (
                       <div className="mt-2.5 mb-12 ">
-                        <Link to={`/blogs/${blog.slug}`}>
+                        <Link to={`/${blog.slug}`}>
                           <div className="h-[250px] hover__image w-full rounded-[8px] overflow-hidden">
                             <img
                               className="w-full  h-full object-cover"

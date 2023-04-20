@@ -11,21 +11,24 @@ import useFetch from "../../../hooks/useFetch";
 
 function NavBar() {
   let flag = false;
-
+  const cvEcosystem = useFetch(
+    `${process.env.REACT_APP_DOMAIN}/api/cv-ecosystems`
+  );
   const ecosystems = useFetch(`${process.env.REACT_APP_DOMAIN}/api/ecosystems`);
   const listEcosystem = ecosystems && ecosystems?.data;
 
   const pathName = window.location.pathname;
   const listSlug = [
-    "/analytics",
-    "/analytics/ecosystem",
-    "/analytics/airdrop",
-    "/analytics/nft",
-    "/analytics/knowledge",
-    "/analytics/ama",
+    "/vi/analytics",
+    "/vi/analytics/he-sinh-thai",
+    "/vi/analytics/airdrop",
+    "/vi/analytics/nft",
+    "/vi/analytics/knowledge",
+    "/vi/analytics/ama",
+    "/vi/analytics/he-sinh-thai-cryptoviet",
   ];
   listEcosystem?.data.map((item) => {
-    return listSlug.push(`/ecosystem/${item.attributes.Name.toLowerCase()}`);
+    return listSlug.push(`/he-sinh-thai/${item.attributes.Name.toLowerCase()}`);
   });
 
   flag = listSlug.includes(pathName) ? true : false;
@@ -69,7 +72,7 @@ function NavBar() {
             <ul className="font-medium flex flex-row gap-4 md:p-0 relative">
               <li className="">
                 <Link
-                  to="/analytics"
+                  to="/vi/analytics"
                   className="block py-2 pl-3 pr-4 hover:text-main transition-all  rounded"
                 >
                   <span
@@ -114,7 +117,7 @@ function NavBar() {
               </li>
               <li className="nft">
                 <Link
-                  to="#"
+                  to="/vi/he-sinh-thai-cryptoviet"
                   className="block py-2 pl-3 pr-4 relative z-10  hover:text-main transition-all"
                 >
                   <span
@@ -127,14 +130,16 @@ function NavBar() {
                   </span>
                 </Link>
                 <ul className="absolute hidden nft__menu bg-white text-sm font-semibold shadow-3xl py-4 pr-8 pl-4 rounded-2xl">
-                  <li className="mb-2">
-                    <Link className="hover:text-main ">
-                      CryptoViet Ventures
-                    </Link>
-                  </li>
-                  <li>
-                    <Link className="hover:text-main ">Gafi Network</Link>
-                  </li>
+                  {cvEcosystem?.data?.data?.map((item) => (
+                    <li className="mb-2">
+                      <Link
+                        to={`/vi/he-sinh-thai-cryptoviet/${item.attributes.slug}`}
+                        className="hover:text-main "
+                      >
+                        {item.attributes.Name}
+                      </Link>
+                    </li>
+                  ))}
                 </ul>
               </li>
 
