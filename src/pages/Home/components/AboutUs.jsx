@@ -17,7 +17,7 @@ function AboutUs() {
           quan về lĩnh vực tiền mã hóa và công nghệ blockchain trên toàn cầu.
         </p>
 
-        <div className="flex w-full mx-auto relative md:container md:pr-16 lg:pr-0 md:mb-12 lg:mb-0 items-center">
+        <div className="flex w-full mx-auto relative justify-center md:container md:pr-16 lg:pr-0 md:mb-12 lg:mb-0 items-center">
           <div className="z-10 ">
             <Link target="_blank" to="https://grindy.io/" title="Grindy">
               <img
