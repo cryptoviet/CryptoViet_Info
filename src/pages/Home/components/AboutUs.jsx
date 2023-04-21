@@ -18,16 +18,16 @@ function AboutUs() {
         </p>
 
         <div className="flex w-full mx-auto relative justify-center md:container md:pr-16 lg:pr-0 md:mb-12 lg:mb-0 items-center">
-          <div className="z-10 ">
+          <div className="z-10">
             <Link target="_blank" to="https://grindy.io/" title="Grindy">
               <img
                 className="relative opacity-0 lg:opacity-100"
-                src="images/logo_prj/grindy.svg "
+                src="/grindy.svg "
                 alt="project"
               ></img>
               <img
                 className="w-2/6 logo-fund absolute top-0 opacity-1 lg:opacity-0"
-                src="images/logo_prj/grindy1.svg"
+                src="/grindy1.svg"
                 alt="project"
               ></img>
             </Link>
@@ -40,17 +40,17 @@ function AboutUs() {
             >
               <img
                 className="relative  opacity-0 lg:opacity-100"
-                src="images/logo_prj/cv.svg"
+                src="/cv.svg"
                 alt="project"
               ></img>
               {/* <img
                 className="w-2/6 logo-fund absolute top-0 animate-none lg:animate-pulse opacity-1 lg:opacity-0"
-                src="/images/logo_prj/ccv2.png"
+                src="//ccv2.png"
                 alt="project"
               ></img> */}
             </Link>
           </div>
-          <div className="z-10">
+          <div className="z-10  mr-20">
             <Link
               target="_blank"
               to="https://cryptoviet.info/"
@@ -58,12 +58,12 @@ function AboutUs() {
             >
               <img
                 className="relative opacity-0 lg:opacity-100"
-                src="/images/logo_prj/cvv.svg"
+                src="/cvv.svg"
                 alt="project"
               ></img>
               <img
                 className=" w-2/6 logo-fund absolute top-0 opacity-1 md:opacity-1 lg:opacity-0"
-                src="/images/logo_prj/cvv1.svg"
+                src="/cvv1.svg"
                 alt="project"
               ></img>
             </Link>

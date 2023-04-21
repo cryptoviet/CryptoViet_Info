@@ -28,10 +28,10 @@ function SlugAnalytics({ blogs, categories }) {
       slug: blog.attributes.slug,
       image:
         process.env.REACT_APP_DOMAIN +
-        blog?.attributes.images.data[0].attributes.url,
+        blog?.attributes?.images?.data[0]?.attributes?.url,
 
       author: blog?.attributes?.author?.data?.attributes?.FullName,
-      ecosystem: blog.attributes.ecosystem.data.attributes.Name,
+      ecosystem: blog?.attributes?.ecosystem?.data?.attributes?.Name,
 
       createdAt: blog.attributes.createdAt,
     };
@@ -62,7 +62,7 @@ function SlugAnalytics({ blogs, categories }) {
                           <div className="h-[250px] hover__image w-full rounded-[8px] overflow-hidden">
                             <img
                               className="w-full  h-full object-cover"
-                              src={blog.image}
+                              src={blog?.image}
                               alt=""
                             />
                           </div>
