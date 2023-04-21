@@ -6,7 +6,7 @@ import Layout from "../../../../layouts/Layout";
 import ErrorPage from "../../../../components/ErrorPage";
 import Container from "../../../../components/Container";
 
-function SlugEcosystem({ blogs, ecosystems }) {
+function SlugNft({ blogs, nftApi }) {
   const { slug } = useParams();
 
   function reverseString(str) {
@@ -15,7 +15,7 @@ function SlugEcosystem({ blogs, ecosystems }) {
 
   let checkSlug = [];
 
-  ecosystems?.data.data.map((item) => {
+  nftApi?.data.data.map((item) => {
     return checkSlug.push(item.attributes.slug);
   });
 
@@ -32,6 +32,7 @@ function SlugEcosystem({ blogs, ecosystems }) {
 
       author: blog?.attributes?.author?.data?.attributes?.FullName,
       ecosystem: blog?.attributes?.ecosystem?.data?.attributes?.Name,
+      nft: blog.attributes?.NFT?.data?.attributes?.slug,
       createdAt: blog.attributes.createdAt,
     };
   });
@@ -41,7 +42,7 @@ function SlugEcosystem({ blogs, ecosystems }) {
         <div className="mt-10 min-h-[518px]">
           <h2 className="w-full font-bold relative z-10">
             <span className="pr-2 text-3xl capitalize">
-              {slug.replaceAll("-", " ")}
+              {slug?.replaceAll("-", " ")}
             </span>
           </h2>
           <div className="w-full ">
@@ -49,9 +50,7 @@ function SlugEcosystem({ blogs, ecosystems }) {
               <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-4 lg:pr-10 md:pr-10">
                 {listPost
                   .filter(
-                    (eco) =>
-                      eco.ecosystem !== undefined &&
-                      eco.ecosystem.toLowerCase().includes(slug)
+                    (eco) => eco.nft !== undefined && eco.nft.includes(slug)
                   )
                   .map((blog) => (
                     <>
@@ -100,4 +99,4 @@ function SlugEcosystem({ blogs, ecosystems }) {
   );
 }
 
-export default SlugEcosystem;
+export default SlugNft;

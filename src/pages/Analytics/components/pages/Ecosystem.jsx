@@ -3,9 +3,13 @@ import { Link } from "react-router-dom";
 import Container from "../../../../components/Container";
 import Sidebar from "../../../../components/Sidebar";
 import Layout from "../../../../layouts/Layout";
+import { FaUserTie } from "react-icons/fa";
+import { BsFillCalendarEventFill } from "react-icons/bs";
 
 function Ecosystem({ blogs, ecosystems }) {
-  // const slug = window.location.href.split("/")[4];
+  function reverseString(str) {
+    return str.split("-").reverse().join("/");
+  }
 
   const listPost = blogs.data.map((blog) => {
     return {
@@ -16,10 +20,11 @@ function Ecosystem({ blogs, ecosystems }) {
       slug: blog.attributes.slug,
       image:
         process.env.REACT_APP_DOMAIN +
-        blog?.attributes.images.data[0].attributes.url,
+        blog?.attributes?.images?.data[0]?.attributes?.url,
 
-      author: blog.attributes.author.data,
+      author: blog?.attributes?.author?.data?.attributes?.FullName,
       ecosystem: blog.attributes?.ecosystem?.data?.attributes?.Name,
+      createdAt: blog.attributes.createdAt,
     };
   });
 
@@ -44,23 +49,37 @@ function Ecosystem({ blogs, ecosystems }) {
                     )
                     .slice(0, 2)
                     .map((blog) => (
-                      <div className="mt-2.5 mb-12 ">
-                        <Link to={`/${blog.slug}`}>
-                          <div className="h-[250px] hover__image w-full rounded-[8px] overflow-hidden">
-                            <img
-                              className="w-full  h-full object-cover"
-                              src={blog.image}
-                              alt=""
-                            />
+                      <>
+                        <div className="mt-2.5 mb-12 ">
+                          <Link to={`/${blog.slug}`}>
+                            <div className="h-[250px] hover__image w-full rounded-[8px] overflow-hidden">
+                              <img
+                                className="w-full  h-full object-cover"
+                                src={blog.image}
+                                alt=""
+                              />
+                            </div>
+
+                            <h2 className="font-bold text-xl my-2 hover:text-main transition-all">
+                              {blog.title}
+                            </h2>
+                          </Link>
+                          <div className="  flex justify-between mt-4">
+                            <span className="flex pb-2 leading-[14px] font-light  text-sm text-text">
+                              <FaUserTie className="mr-1" />
+                              <span className="block font-semibold">
+                                {blog.author}
+                              </span>
+                            </span>
+                            <span className="font-light flex pb-2 leading-[14px] text-sm text-text">
+                              <BsFillCalendarEventFill className="mr-1" />
+                              <span className="block">
+                                {reverseString(blog.createdAt.substring(0, 10))}
+                              </span>
+                            </span>
                           </div>
-
-                          <h2 className="font-bold text-xl my-2 hover:text-main transition-all">
-                            {blog.title}
-                          </h2>
-                        </Link>
-
-                        <p className="line-clamp-2">{blog.description}</p>
-                      </div>
+                        </div>
+                      </>
                     ))}
                 </div>
               </>

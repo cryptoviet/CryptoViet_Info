@@ -9,7 +9,7 @@ function ErrorPage() {
           Page not found
         </h2>
         <div className="w-2/4 mx-auto mt-24">
-          <img className="mx-auto w-2/4" src="images/404.svg" alt="" />
+          <img className="mx-auto w-2/4" src="/images/404.svg" alt="" />
         </div>
       </div>
 

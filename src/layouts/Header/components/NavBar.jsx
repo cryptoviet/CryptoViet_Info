@@ -14,21 +14,28 @@ function NavBar() {
   const cvEcosystem = useFetch(
     `${process.env.REACT_APP_DOMAIN}/api/cv-ecosystems`
   );
+
+  const nftApi = useFetch(`${process.env.REACT_APP_DOMAIN}/api/nfts`);
   const ecosystems = useFetch(`${process.env.REACT_APP_DOMAIN}/api/ecosystems`);
   const listEcosystem = ecosystems && ecosystems?.data;
 
   const pathName = window.location.pathname;
+
   const listSlug = [
     "/vi/analytics",
     "/vi/analytics/he-sinh-thai",
     "/vi/analytics/airdrop",
     "/vi/analytics/nft",
     "/vi/analytics/knowledge",
-    "/vi/analytics/ama",
+    "/vi/analytics/thu-vien",
     "/vi/analytics/he-sinh-thai-cryptoviet",
   ];
   listEcosystem?.data.map((item) => {
-    return listSlug.push(`/he-sinh-thai/${item.attributes.Name.toLowerCase()}`);
+    return listSlug.push(`/vi/analytics/he-sinh-thai/${item.attributes.slug}`);
+  });
+
+  nftApi?.data?.data.map((item) => {
+    return listSlug.push(`/vi/analytics/nft/${item.attributes.slug}`);
   });
 
   flag = listSlug.includes(pathName) ? true : false;

@@ -51,8 +51,8 @@ function DetailPage({ blogs }) {
                     </span>
                   </Link>
                   <p className="font-semibold mt-10">
-                    Posted by {blog.attributes.author.data.attributes.FullName}{" "}
-                    - {}
+                    Posted by{" "}
+                    {blog?.attributes?.author?.data?.attributes?.FullName} - {}
                     {reverseString(blog.attributes.createdAt.substring(0, 10))}
                   </p>
 

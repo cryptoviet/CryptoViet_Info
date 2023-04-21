@@ -28,8 +28,8 @@ function SlugCV({ blogs }) {
         process.env.REACT_APP_DOMAIN +
         blog?.attributes.images.data[0].attributes.url,
 
-      author: blog.attributes.author?.data.attributes.FullName,
-      ecosystem: blog.attributes.ecosystem.data.attributes.Name,
+      author: blog?.attributes?.author?.data?.attributes?.FullName,
+      ecosystem: blog?.attributes?.ecosystem?.data?.attributes?.Name,
       cv_ecosystem: blog.attributes?.cv_ecosystem?.data?.attributes?.Name,
       slug_cv: blog.attributes?.cv_ecosystem?.data?.attributes?.slug,
       createdAt: blog.attributes.createdAt,
@@ -75,8 +75,7 @@ function SlugCV({ blogs }) {
                           </h2>
                         </Link>
 
-                        <p className="line-clamp-3 ">{blog.description}</p>
-                        <div className="flex justify-between mt-2">
+                        <div className="  flex justify-between mt-4">
                           <span className="flex pb-2 leading-[14px] font-light  text-sm text-text">
                             <FaUserTie className="mr-1" />
                             <span className="block font-semibold">

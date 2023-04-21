@@ -16,10 +16,14 @@ import SlugEcosystem from "./pages/Analytics/components/pages/SlugEcosystem";
 import SlugAnalytics from "./pages/Analytics/components/SlugAnalytics";
 import CVEcosystem from "./pages/CV_Ecosystem/CVEcosystem";
 import SlugCV from "./pages/CV_Ecosystem/components/SlugCV";
+import Nft from "./pages/Analytics/components/pages/Nft";
+import SlugNft from "./pages/Analytics/components/pages/SlugNft";
 
 function App() {
   const url = process.env.REACT_APP_DOMAIN;
   const { loading, error, data } = useFetch(`${url}/api/posts?populate=* `);
+
+  const nftApi = useFetch(`${process.env.REACT_APP_DOMAIN}/api/nfts`);
 
   const categories = useFetch(`${url}/api/categories`);
 
@@ -121,6 +125,18 @@ function App() {
     {
       path: "vi/he-sinh-thai-cryptoviet",
       element: <CVEcosystem blogs={data ? data : ""} />,
+      children: [],
+    },
+
+    {
+      path: "vi/analytics/nft/:slug",
+      element: <SlugNft blogs={data ? data : ""} nftApi={nftApi} />,
+      children: [],
+    },
+
+    {
+      path: "vi/analytics/nft",
+      element: <Nft blogs={data ? data : ""} nftApi={nftApi} />,
       children: [],
     },
   ]);

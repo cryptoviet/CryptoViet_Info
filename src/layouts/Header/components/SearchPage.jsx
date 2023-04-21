@@ -68,7 +68,7 @@ function SearchPage({ blogs }) {
                           <p className="line-clamp-3 ">
                             {blog.attributes.description}
                           </p>
-                          <div className="flex justify-between mt-2">
+                          <div className="  flex justify-between mt-4">
                             <span className="flex pb-2 leading-[14px] font-light  text-sm text-text">
                               <FaUserTie className="mr-1" />
                               <span className="block font-semibold">

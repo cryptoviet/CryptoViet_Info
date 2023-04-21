@@ -17,7 +17,7 @@ function SlugAnalytics({ blogs, categories }) {
     "/vi/analytics/airdrop",
     "/vi/analytics/nft",
     "/vi/analytics/knowledge",
-    "/vi/analytics/ama",
+    "/vi/analytics/thu-vien",
   ];
   const listPost = blogs.data.map((blog) => {
     return {
@@ -30,14 +30,12 @@ function SlugAnalytics({ blogs, categories }) {
         process.env.REACT_APP_DOMAIN +
         blog?.attributes.images.data[0].attributes.url,
 
-      author: blog.attributes.author?.data.attributes.FullName,
+      author: blog?.attributes?.author?.data?.attributes?.FullName,
       ecosystem: blog.attributes.ecosystem.data.attributes.Name,
-      
+
       createdAt: blog.attributes.createdAt,
     };
   });
-
-  console.log(listPost);
 
   return (
     <Layout>
@@ -45,7 +43,7 @@ function SlugAnalytics({ blogs, categories }) {
         <div className="mt-10 min-h-[518px]">
           <h2 className="w-full font-bold">
             <span className="pr-2 text-3xl capitalize relative z-10">
-              {slug === "nft" ? "NFTs" : slug}
+              {slug === "thu-vien" ? "Thư viện" : slug}
             </span>
           </h2>
           <div className="w-full">
@@ -74,12 +72,11 @@ function SlugAnalytics({ blogs, categories }) {
                           </h2>
                         </Link>
 
-                        <p className="line-clamp-3 ">{blog.description}</p>
-                        <div className="flex justify-between mt-2">
+                        <div className="  flex justify-between mt-4">
                           <span className="flex pb-2 leading-[14px] font-light  text-sm text-text">
                             <FaUserTie className="mr-1" />
                             <span className="block font-semibold">
-                              {blog.author}
+                              {blog?.author}
                             </span>
                           </span>
                           <span className="font-light flex pb-2 leading-[14px] text-sm text-text">

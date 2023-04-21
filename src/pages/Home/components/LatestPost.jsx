@@ -70,9 +70,9 @@ function LatestPost({ blogs }) {
         >
           {blogs?.data.map((blog) => (
             <>
-              {blog.attributes.category.data !== null && (
+              {blog?.attributes?.category?.data !== null && (
                 <>
-                  {blog.attributes.category.data.attributes.slug ===
+                  {blog?.attributes?.category?.data?.attributes.slug ===
                     "ecosystem" && (
                     <SwiperSlide>
                       <div
@@ -98,14 +98,15 @@ function LatestPost({ blogs }) {
                             {blog?.attributes.title}
                           </h2>
                         </Link>
-                        <p className="mb-4 text-white pointer-events-none cursor-auto line-clamp-3">
-                          {blog?.attributes.description}
-                        </p>
+
                         <div className="flex justify-between">
                           <span className="flex pb-2 leading-[14px] font-light  text-sm text-white">
                             <FaUserTie className="mr-1" />
                             <span className="block">
-                              {blog?.attributes.author.data.attributes.FullName}
+                              {
+                                blog?.attributes?.author?.data?.attributes
+                                  ?.FullName
+                              }
                             </span>
                           </span>
                           <span className="font-light flex pb-2 leading-[14px] text-sm text-white">
@@ -128,7 +129,7 @@ function LatestPost({ blogs }) {
           ))}
         </Swiper>
 
-        <Link to="/analytics" className="flex text-text">
+        <Link to="/vi/analytics" className="flex text-text">
           <span className="bg-white rounded-lg hover:bg-main hover:text-white transition-all py-2 mx-auto px-4 font-bold text-sm">
             GO TO RESEARCH
           </span>

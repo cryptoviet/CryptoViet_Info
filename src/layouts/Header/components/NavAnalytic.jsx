@@ -4,6 +4,8 @@ import { Link } from "react-router-dom";
 import useFetch from "../../../hooks/useFetch";
 function NavAnalytic() {
   const ecosystems = useFetch(`${process.env.REACT_APP_DOMAIN}/api/ecosystems`);
+  const nftApi = useFetch(`${process.env.REACT_APP_DOMAIN}/api/nfts`);
+
   const listEcosystem = ecosystems && ecosystems?.data;
 
   const linkTo = "/vi/analytics";
@@ -59,15 +61,16 @@ function NavAnalytic() {
           NFTs
         </Link>
         <ul className="absolute nft__menu hidden mt-2 bg-white shadow-3xl py-4 pr-10 pl-4 rounded-2xl">
-          <li>
-            <Link className="hover:text-main ">Metaverse</Link>
-          </li>
-          <li>
-            <Link className="hover:text-main ">Gamefi</Link>
-          </li>
-          <li>
-            <Link className="hover:text-main ">NFT - fi</Link>
-          </li>
+          {nftApi?.data?.data?.map((item) => (
+            <li className="mb-2">
+              <Link
+                to={`/vi/analytics/nft/${item.attributes.slug}`}
+                className="hover:text-main "
+              >
+                {item.attributes.Name}
+              </Link>
+            </li>
+          ))}
         </ul>
       </li>
       <li className="font-semibold text-base hover:text-main transition-all">
@@ -84,11 +87,11 @@ function NavAnalytic() {
       <li className="font-semibold text-base hover:text-main transition-all">
         <Link
           className={`hover:text-main ${
-            pathName === `${linkTo}/ama` && "text-main"
+            pathName === `${linkTo}/thu-vien` && "text-main"
           }`}
-          to={`${linkTo}/ama`}
+          to={`${linkTo}/thu-vien`}
         >
-          AMA
+          Thư viện
         </Link>
       </li>
     </ul>

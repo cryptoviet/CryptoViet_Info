@@ -22,12 +22,12 @@ function AboutUs() {
             <Link target="_blank" to="https://grindy.io/" title="Grindy">
               <img
                 className="relative opacity-0 lg:opacity-100"
-                src="/images/logo_prj/grindy.svg "
+                src="images/logo_prj/grindy.svg "
                 alt="project"
               ></img>
               <img
                 className="w-2/6 logo-fund absolute top-0 opacity-1 lg:opacity-0"
-                src="/images/logo_prj/grindy1.svg"
+                src="images/logo_prj/grindy1.svg"
                 alt="project"
               ></img>
             </Link>
@@ -40,7 +40,7 @@ function AboutUs() {
             >
               <img
                 className="relative  opacity-0 lg:opacity-100"
-                src="/images/logo_prj/cv.svg"
+                src="images/logo_prj/cv.svg"
                 alt="project"
               ></img>
               {/* <img

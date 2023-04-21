@@ -25,9 +25,6 @@ function AnalyticPosts({ blogs, categories }) {
                 <h2 className="font-bold line-clamp-2 text-xl my-2">
                   {blog.attributes.title}
                 </h2>
-                <p className="text-text line-clamp-3">
-                  {blog.attributes.description}
-                </p>
 
                 <span className="block text-sm text-gray-500 mt-4">
                   24/03/2023

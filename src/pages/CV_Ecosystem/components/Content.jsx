@@ -15,9 +15,9 @@ function Content({ blogs, cvEcosystem }) {
         process.env.REACT_APP_DOMAIN +
         blog?.attributes.images.data[0].attributes.url,
 
-      author: blog.attributes.author?.data.attributes.FullName,
+      author: blog?.attributes?.author?.data?.attributes?.FullName,
       createdAt: blog.attributes.createdAt,
-      cv_ecosystem: blog.attributes?.cv_ecosystem?.data?.attributes?.Name,
+      cv_ecosystem: blog?.attributes?.cv_ecosystem?.data?.attributes?.Name,
     };
   });
 
@@ -60,8 +60,7 @@ function Content({ blogs, cvEcosystem }) {
                         </h2>
                       </Link>
 
-                      <p className="line-clamp-2">{blog.description}</p>
-                      <div className="flex justify-between mt-2">
+                      <div className="  flex justify-between mt-4">
                         <span className="flex pb-2 leading-[14px] font-light  text-sm text-text">
                           <FaUserTie className="mr-1" />
                           <span className="block font-semibold">
@@ -107,7 +106,7 @@ function Content({ blogs, cvEcosystem }) {
                           <Link to={`/${blog.slug}`}>{blog.title}</Link>
                         </h2>
 
-                        <div className="flex justify-between mt-2">
+                        <div className="  flex justify-between mt-4">
                           <span className="flex pb-2 leading-[14px] font-light  text-sm text-text">
                             <FaUserTie className="mr-1" />
                             <span className="block font-semibold">
