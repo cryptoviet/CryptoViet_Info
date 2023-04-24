@@ -36,7 +36,6 @@ function App() {
       </p>
     );
   if (error) return <p>Error...</p>;
-  console.log(data);
 
   const router = createBrowserRouter([
     {

@@ -79,7 +79,7 @@ function Sidebar() {
             return (
               <div key={category.id} className="my-2">
                 <Link
-                  to={`/analytics/${category.attributes.slug}`}
+                  to={`/vi/analytics/${category.attributes.slug}`}
                   className="bg-[#F0F0F0] hover:bg-main hover:text-white transition-all py-1 px-2 rounded-md"
                 >
                   {category.attributes.Name} ({postsInCategory.length})

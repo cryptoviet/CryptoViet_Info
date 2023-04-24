@@ -36,7 +36,6 @@ function SlugCV({ blogs }) {
     };
   });
 
-  console.log(listPost);
 
   return (
     <Layout>

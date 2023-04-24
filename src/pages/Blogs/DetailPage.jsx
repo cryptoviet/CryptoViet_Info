@@ -1,5 +1,5 @@
 import MarkdownIt from "markdown-it";
-import React from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import ErrorPage from "../../components/ErrorPage";
 import Sidebar from "../../components/Sidebar";
@@ -8,6 +8,19 @@ function DetailPage({ blogs }) {
   function reverseString(str) {
     return str.split("-").reverse().join("/");
   }
+
+  useEffect(() => {
+    const images = document.querySelectorAll(".post__detail img");
+
+    images.forEach((item) => {
+      const string = "https://admin.cryptoviet.info";
+      const src = item.getAttribute("src");
+
+      if (src && src.includes(string)) return string + src;
+
+      item.setAttribute("src", string + src);
+    });
+  });
 
   const { slug } = useParams();
   let blog = {};
