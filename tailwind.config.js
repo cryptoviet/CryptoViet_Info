@@ -12,6 +12,7 @@ module.exports = {
         label: "#818181",
         black: "#2A2A2A",
         gray: "#A0A0A0",
+        main2: "#2A60A9",
       },
       boxShadow: {
         "3xl": " 0px 4px 16px rgba(0, 0, 0, 0.25)",

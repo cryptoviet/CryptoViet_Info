@@ -16,8 +16,14 @@ function Onchain() {
               về hoạt động của các đồng tiền mã hóa trên blockchain.
             </p>
           </div>
-          <Link className="text-white text-right mt-12">
-            <span className="bg-black rounded-lg px-3 py-2">Go to onchain</span>
+          <Link
+            to="https://data.cryptoviet.info/"
+            target="_blank"
+            className="text-white text-right mt-12"
+          >
+            <span className="bg-black rounded-lg text-sm hover:bg-main transition-all uppercase mr-[26px] px-3 py-2">
+              Go to onchain
+            </span>
           </Link>
           <img src="onchain2.svg" className="mt-2" alt="" />
         </div>

@@ -44,7 +44,7 @@ function Content({ blogs, categories, loading }) {
                 <>
                   {blog.categories === category.attributes.Name && (
                     <div className="mt-2.5 lg:w-[50%] mb-12 md:lg:w-[50%]">
-                      <Link to={`/${blog.slug}`}>
+                      <Link to={`/${blog.slug}`} className="post__content">
                         <div className="h-[250px] hover__image w-full rounded-[8px] overflow-hidden">
                           <img
                             className="w-full  h-full object-cover"
@@ -90,7 +90,7 @@ function Content({ blogs, categories, loading }) {
                   <>
                     <div className="flex flex-row gap-4 ">
                       <div className="w-[40%] h-[100px] hover__image rounded-[8px] overflow-hidden ">
-                        <Link to={`/${blog.slug}`}>
+                        <Link to={`/${blog.slug}`} className="post__content">
                           <img
                             className="w-full h-full object-cover "
                             src={blog.image}

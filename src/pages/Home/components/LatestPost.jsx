@@ -28,8 +28,8 @@ function LatestPost({ blogs }) {
   }
 
   return (
-    <div className="bg-black text-white relative latest__posts">
-      <div className="container mx-auto lg:pt-28 md:pt-48 pt-64 pb-10">
+    <div className="bg-main2 text-white relative latest__posts">
+      <div className="container mx-auto lg:pt-28 md:pt-48 pt-[6rem] 64 pb-10">
         <div className="mb-12">
           <h1 className="font-bold text-[54px] text-center">Analytics</h1>
           <p className="text-center lg:w-[65%] w-full mx-auto">
@@ -73,15 +73,18 @@ function LatestPost({ blogs }) {
               {blog?.attributes?.category?.data !== null && (
                 <>
                   {blog?.attributes?.category?.data?.attributes.slug ===
-                    "ecosystem" && (
+                    "he-sinh-thai" && (
                     <SwiperSlide>
                       <div
                         data-aos="fade-up"
                         data-aos-anchor-placement="top-center"
                         className="mb-8"
                       >
-                        <Link to={`/${blog?.attributes.slug}`}>
-                          <div className="rounded-xl hover__image relative overflow-hidden   h-[235px]">
+                        <Link
+                          to={`/${blog?.attributes.slug}`}
+                          className="post__content"
+                        >
+                          <div className="rounded-xl transition-all hover__image relative overflow-hidden   h-[235px]">
                             <img
                               className="h-full w-full object-cover"
                               src={
@@ -94,13 +97,13 @@ function LatestPost({ blogs }) {
                               Detail
                             </span>
                           </div>
-                          <h2 className="uppercase lg:h-14 md:h-14 hover:text-item py-3 mt-2 mb-2 text-white font-bold line-clamp-2">
+                          <h3 className="uppercase lg:h-14 transition-all md:h-14 py-3 mt-2 mb-2 text-white font-bold line-clamp-2">
                             {blog?.attributes.title}
-                          </h2>
+                          </h3>
                         </Link>
 
                         <div className="flex justify-between">
-                          <span className="flex pb-2 leading-[14px] font-light  text-sm text-white">
+                          <span className="flex pb-2 leading-[14px] font-light text-sm text-white">
                             <FaUserTie className="mr-1" />
                             <span className="block">
                               {

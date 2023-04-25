@@ -36,7 +36,6 @@ function SlugCV({ blogs }) {
     };
   });
 
-
   return (
     <Layout>
       <Container>
@@ -60,7 +59,7 @@ function SlugCV({ blogs }) {
                   .map((blog) => (
                     <>
                       <div className="mt-2.5 mb-12 z-10">
-                        <Link to={`/${blog.slug}`}>
+                        <Link to={`/${blog.slug}`} className="post__content">
                           <div className="h-[250px] hover__image w-full rounded-[8px] overflow-hidden">
                             <img
                               className="w-full  h-full object-cover"

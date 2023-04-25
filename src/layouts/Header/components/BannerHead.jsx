@@ -5,8 +5,13 @@ import { Link } from "react-router-dom";
 function BannerHead() {
   return (
     <div className="bg-[#DEF2FF] w-full py-1">
-      <Link to="/" className="text-center  ">
-        <p className=" text-[#5C5C5C] flex items-center gap-1 justify-center  font-semibold">
+      <Link
+        to="https://t.me/nghiencoingroup"
+        target="_blank"
+        className="text-center"
+        title="https://t.me/nghiencoingroup"
+      >
+        <p className=" text-[#5C5C5C] hover:text-main transition-all flex items-center gap-1 justify-center font-semibold">
           <RiGlobalFill className=""></RiGlobalFill>
           Follow Nghiện Coin community
           <span className="lg:block md:block hidden">

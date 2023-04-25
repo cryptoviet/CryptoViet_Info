@@ -47,15 +47,15 @@ function SlugNft({ blogs, nftApi }) {
           </h2>
           <div className="w-full ">
             {checkSlug.includes(slug) ? (
-              <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-4 lg:pr-10 md:pr-10">
+              <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1  gap-10 lg:pr-10 md:pr-10">
                 {listPost
                   .filter(
                     (eco) => eco.nft !== undefined && eco.nft.includes(slug)
                   )
                   .map((blog) => (
                     <>
-                      <div className="mt-2.5 mb-12 z-10">
-                        <Link to={`/${blog.slug}`}>
+                      <div className=" z-10">
+                        <Link to={`/${blog.slug}`} className="post__content">
                           <div className="h-[250px] hover__image w-full rounded-[8px] overflow-hidden">
                             <img
                               className="w-full  h-full object-cover"

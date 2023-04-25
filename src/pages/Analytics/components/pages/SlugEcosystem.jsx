@@ -1,10 +1,10 @@
 import React from "react";
-import { Link, useParams } from "react-router-dom";
-import { FaUserTie } from "react-icons/fa";
 import { BsFillCalendarEventFill } from "react-icons/bs";
-import Layout from "../../../../layouts/Layout";
-import ErrorPage from "../../../../components/ErrorPage";
+import { FaUserTie } from "react-icons/fa";
+import { Link, useParams } from "react-router-dom";
 import Container from "../../../../components/Container";
+import ErrorPage from "../../../../components/ErrorPage";
+import Layout from "../../../../layouts/Layout";
 
 function SlugEcosystem({ blogs, ecosystems }) {
   const { slug } = useParams();
@@ -39,14 +39,14 @@ function SlugEcosystem({ blogs, ecosystems }) {
     <Layout>
       <Container>
         <div className="mt-10 min-h-[518px]">
-          <h2 className="w-full font-bold relative z-10">
+          <h2 className="w-full font-bold relative mb-12 z-10">
             <span className="pr-2 text-3xl capitalize">
-              {slug.replaceAll("-", " ")}
+              {slug === "khac" ? "Khác" : slug.replaceAll("-", " ")}
             </span>
           </h2>
           <div className="w-full ">
             {checkSlug.includes(slug) ? (
-              <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-4 lg:pr-10 md:pr-10">
+              <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1  gap-10 lg:pr-10 md:pr-10">
                 {listPost
                   .filter(
                     (eco) =>
@@ -55,8 +55,8 @@ function SlugEcosystem({ blogs, ecosystems }) {
                   )
                   .map((blog) => (
                     <>
-                      <div className="mt-2.5 mb-12 z-10">
-                        <Link to={`/${blog.slug}`}>
+                      <div className="z-10">
+                        <Link to={`/${blog.slug}`} className="post__content">
                           <div className="h-[250px] hover__image w-full rounded-[8px] overflow-hidden">
                             <img
                               className="w-full  h-full object-cover"
@@ -94,6 +94,7 @@ function SlugEcosystem({ blogs, ecosystems }) {
           </div>
           <div className="blur__bg-head lg:block md:block hidden"></div>
         </div>
+
         <div className="blur__bg overflow-hidden lg:block md:block hidden"></div>
       </Container>
     </Layout>

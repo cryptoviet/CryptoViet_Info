@@ -76,9 +76,9 @@ function NavAnalytic() {
       <li className="font-semibold text-base hover:text-main transition-all">
         <Link
           className={`hover:text-main ${
-            pathName === "/vi/analytics/knowledge" && "text-main"
+            pathName === "/vi/analytics/kien-thuc" && "text-main"
           }`}
-          to={`${linkTo}/knowledge`}
+          to={`${linkTo}/kien-thuc`}
         >
           Kiến thức
         </Link>

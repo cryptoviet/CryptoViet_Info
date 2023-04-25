@@ -27,6 +27,11 @@ function Nft({ blogs, nftApi }) {
       <Container>
         <div className="lg:flex flex-row flex-none mt-10">
           <div className="lg:w-[75%] w-full z-10">
+            <h2 className="w-full font-bold mb-14">
+              <span className="pr-2 text-3xl  capitalize relative z-10">
+                NFT
+              </span>
+            </h2>
             {nftApi?.data?.data.map((item) => (
               <>
                 <div>
@@ -44,7 +49,7 @@ function Nft({ blogs, nftApi }) {
                     .slice(0, 2)
                     .map((blog) => (
                       <div className="mt-2.5 mb-12 ">
-                        <Link to={`/${blog.slug}`}>
+                        <Link to={`/${blog.slug}`} className="post__content">
                           <div className="h-[250px] hover__image w-full rounded-[8px] overflow-hidden">
                             <img
                               className="w-full  h-full object-cover"

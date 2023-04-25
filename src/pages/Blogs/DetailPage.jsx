@@ -1,5 +1,5 @@
 import MarkdownIt from "markdown-it";
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 import ErrorPage from "../../components/ErrorPage";
 import Sidebar from "../../components/Sidebar";
@@ -44,9 +44,12 @@ function DetailPage({ blogs }) {
               <div>
                 <article className="content__post">
                   <header>
-                    <h3 className="text-4xl font-semibold mb-4">
+                    <h1
+                      title={blog.attributes.title}
+                      className="!text-4xl !leading-[1.3] !font-medium mb-4"
+                    >
                       {blog.attributes.title}
-                    </h3>
+                    </h1>
                   </header>
                   <Link
                     to={`/vi/analytics/${
@@ -81,7 +84,7 @@ function DetailPage({ blogs }) {
                     alt=""
                   />
                   <section
-                    className="post__detail"
+                    className="post__detail mb-12"
                     dangerouslySetInnerHTML={{
                       __html: md.render(blog.attributes.content),
                     }}

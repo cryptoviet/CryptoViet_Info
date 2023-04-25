@@ -1,27 +1,48 @@
 import React from "react";
-import { Link, useParams } from "react-router-dom";
-import { FaUserTie } from "react-icons/fa";
 import { BsFillCalendarEventFill } from "react-icons/bs";
-import Layout from "../../../layouts/Layout";
+import { FaUserTie } from "react-icons/fa";
+import { Link, useParams } from "react-router-dom";
 import Container from "../../../components/Container";
 import ErrorPage from "../../../components/ErrorPage";
-
+import Layout from "../../../layouts/Layout";
 function SlugAnalytics({ blogs, categories }) {
   const { slug } = useParams();
   function reverseString(str) {
     return str.split("-").reverse().join("/");
   }
 
+  const languageVi = [
+    {
+      vi: "Kiến Thức",
+      slug: "kien-thuc",
+    },
+
+    {
+      vi: "Thư viện",
+      slug: "thu-vien",
+    },
+    {
+      vi: "Airdrop",
+      slug: "airdrop",
+    },
+
+    {
+      vi: "Report",
+      slug: "report",
+    },
+  ];
+
   const checkSlug = [
     "/vi/analytics/he-sinh-thai",
     "/vi/analytics/airdrop",
     "/vi/analytics/nft",
-    "/vi/analytics/knowledge",
+    "/vi/analytics/kien-thuc",
     "/vi/analytics/thu-vien",
+    "/vi/analytics/report",
   ];
   const listPost = blogs.data.map((blog) => {
     return {
-      categories: blog.attributes?.category?.data?.attributes?.Name,
+      categories: blog.attributes?.category?.data?.attributes?.slug,
       title: blog.attributes.title,
       content: blog.attributes.content,
       description: blog.attributes.description,
@@ -41,24 +62,25 @@ function SlugAnalytics({ blogs, categories }) {
     <Layout>
       <Container>
         <div className="mt-10 min-h-[518px]">
-          <h2 className="w-full font-bold">
+          <h2 className="w-full font-bold mb-14">
             <span className="pr-2 text-3xl capitalize relative z-10">
-              {slug === "thu-vien" ? "Thư viện" : slug}
+              {languageVi.map((item) => item.slug === slug && item.vi)}
             </span>
           </h2>
           <div className="w-full">
             {checkSlug.includes(`/vi/analytics/${slug}`) ? (
-              <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-4 lg:pr-10 md:pr-10">
+              <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1  gap-10 lg:pr-10 md:pr-10">
                 {listPost
                   .filter(
                     (eco) =>
                       eco.categories !== undefined &&
-                      eco.categories.toLowerCase().includes(slug)
+                      eco.categories.includes(slug)
                   )
+                  .reverse()
                   .map((blog) => (
                     <>
-                      <div className="mt-2.5 mb-12 z-10">
-                        <Link to={`/${blog.slug}`}>
+                      <div className="z-10">
+                        <Link to={`/${blog.slug}`} className="post__content">
                           <div className="h-[250px] hover__image w-full rounded-[8px] overflow-hidden">
                             <img
                               className="w-full  h-full object-cover"
@@ -95,6 +117,7 @@ function SlugAnalytics({ blogs, categories }) {
             )}
           </div>
         </div>
+
         <div className="blur__bg-head lg:block md:block hidden"></div>
       </Container>
       <div className="blur__bg overflow-hidden lg:block md:block hidden"></div>

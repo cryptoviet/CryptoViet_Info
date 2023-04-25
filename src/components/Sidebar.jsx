@@ -1,6 +1,11 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { FaTelegramPlane, FaFacebook, FaYoutube } from "react-icons/fa";
+import {
+  FaTelegramPlane,
+  FaFacebook,
+  FaYoutube,
+  FaTwitter,
+} from "react-icons/fa";
 import { HiDocumentMagnifyingGlass } from "react-icons/hi2";
 import useFetch from "../hooks/useFetch";
 function Sidebar() {
@@ -93,18 +98,18 @@ function Sidebar() {
         <h2 className="w-full font-bold">
           <span className="border-b-2 border-main pr-2 text-xl">Follow Us</span>
         </h2>{" "}
-        <div className="flex flex-wrap justify-between py-8">
-          <div className="flex gap-2 l text-main">
-            <FaTelegramPlane className="text-2xl " />
-            <span>Twitter</span>
+        <div className="flex flex-wrap gap-10 py-8">
+          <div className=" text-main">
+            <FaTelegramPlane className="text-2xl hover:scale-125 cursor-pointer transition-all hover:opacity-80" />
           </div>
-          <div className="flex gap-2 text-main">
-            <FaFacebook className="text-2xl " />
-            <span>Facebook</span>
+          <div className=" text-main">
+            <FaFacebook className="text-2xl hover:scale-125 cursor-pointer transition-all hover:opacity-80" />
           </div>
-          <div className="flex gap-2 text-red-500">
-            <FaYoutube className="text-2xl " />
-            <span>Youtube</span>
+          <div className=" text-red-500">
+            <FaYoutube className="text-2xl hover:scale-125 cursor-pointer transition-all hover:opacity-80" />
+          </div>
+          <div className=" text-main">
+            <FaTwitter className="text-2xl hover:scale-125 cursor-pointer transition-all hover:opacity-80" />
           </div>
         </div>
       </div>

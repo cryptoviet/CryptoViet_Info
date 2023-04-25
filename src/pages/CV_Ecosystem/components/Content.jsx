@@ -46,7 +46,7 @@ function Content({ blogs, cvEcosystem }) {
                   {/* {console.log(blog)} */}
                   {blog.cv_ecosystem === ecosystem.attributes.Name && (
                     <div className="mt-2.5 lg:w-[50%] mb-12 md:lg:w-[50%]">
-                      <Link to={`/${blog.slug}`}>
+                      <Link to={`/${blog.slug}`} className="post__content">
                         <div className="h-[250px] hover__image w-full rounded-[8px] overflow-hidden">
                           <img
                             className="w-full  h-full object-cover"

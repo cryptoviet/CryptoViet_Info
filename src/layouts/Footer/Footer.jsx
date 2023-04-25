@@ -1,5 +1,6 @@
 import React from "react";
 import {
+  FaFacebook,
   FaFacebookF,
   FaTelegramPlane,
   FaTwitter,
@@ -36,10 +37,18 @@ function Footer() {
           </div>
 
           <div className="flex lg:gap-4 md:gap-4 gap-8 font-bold mx-auto mt-2 lg:mr-0 md:mr-0">
-            <FaTelegramPlane />
-            <FaTwitter />
-            <FaFacebookF />
-            <FaYoutube />
+            <div className=" text-main">
+              <FaTelegramPlane className="text-2xl hover:scale-125 cursor-pointer transition-all hover:opacity-80" />
+            </div>
+            <div className=" text-main">
+              <FaFacebook className="text-2xl hover:scale-125 cursor-pointer transition-all hover:opacity-80" />
+            </div>
+            <div className=" text-red-500">
+              <FaYoutube className="text-2xl hover:scale-125 cursor-pointer transition-all hover:opacity-80" />
+            </div>
+            <div className=" text-main">
+              <FaTwitter className="text-2xl hover:scale-125 cursor-pointer transition-all hover:opacity-80" />
+            </div>
           </div>
           <span className="lg:hidden md:hidden block font-semibold mx-auto mt-6">
             ©2017 CryptoViet. All Rights Reserved
