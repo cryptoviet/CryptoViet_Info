@@ -83,18 +83,18 @@ function SlugAnalytics({ blogs, categories }) {
                         <Link to={`/${blog.slug}`} className="post__content">
                           <div className="h-[250px] hover__image w-full rounded-[8px] overflow-hidden">
                             <img
-                              className="w-full  h-full object-cover"
+                              className="w-full  h-full  "
                               src={blog?.image}
                               alt=""
                             />
                           </div>
 
-                          <h2 className="font-bold lg:h-14 md:h-14 text-xl my-2 hover:text-main transition-all">
+                          <h2 className="font-bold lg:h-14 md:h-14 lg:text-xl md:text-lg text-base my-2 hover:text-main transition-all">
                             {blog.title}
                           </h2>
                         </Link>
 
-                        <div className="  flex justify-between mt-4">
+                        <div className="flex justify-between mt-4">
                           <span className="flex pb-2 leading-[14px] font-light  text-sm text-text">
                             <FaUserTie className="mr-1" />
                             <span className="block font-semibold">

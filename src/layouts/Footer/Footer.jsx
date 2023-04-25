@@ -1,7 +1,6 @@
 import React from "react";
 import {
   FaFacebook,
-  FaFacebookF,
   FaTelegramPlane,
   FaTwitter,
   FaYoutube,
@@ -17,7 +16,7 @@ function Footer() {
 
           <button
             className="
-            border-2 btn-hover bg-white uppercase lg:w-auto md:w-1/3 font-bold text-main  py-4 w-full lg:px-8 lg:mt-0 mt-8 lg:mb-0 mb-2 lg:mx-0 mx-auto  text-xs rounded-lg lg:rounded"
+            border-2 btn-hover bg-white uppercase lg:w-auto md:w-1/3 font-bold text-main  py-3  w-full lg:px-8 lg:mt-0 mt-8 lg:mb-0 mb-2 lg:mx-0 mx-auto  text-xs rounded-lg lg:rounded-lg"
           >
             <span>Subscribe</span>
           </button>
@@ -27,7 +26,7 @@ function Footer() {
         <div className="container mx-auto py-4 justify-between grid lg:md-grid-cols-2 lg:grid-cols-2 item-center text-text">
           <div className="lg:flex md:flex items-center gap-4">
             <img
-              className="lg:w-1/3 md:w-1/3 w-2/4 mx-auto"
+              className="lg:w-1/3 md:w-1/3 w-2/4 lg:ml-0 md:ml-0 mx-auto"
               src="/Logo_header.svg"
               alt=""
             />

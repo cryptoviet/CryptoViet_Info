@@ -51,7 +51,7 @@ function SearchPage({ blogs }) {
                           <Link to={`/${blog.attributes.slug}`}>
                             <div className="h-[250px] hover__image w-full rounded-[8px] overflow-hidden">
                               <img
-                                className="w-full  h-full object-cover"
+                                className="w-full  h-full  "
                                 src={
                                   process.env.REACT_APP_DOMAIN +
                                   blog?.attributes.images.data[0].attributes.url

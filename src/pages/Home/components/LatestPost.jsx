@@ -86,7 +86,7 @@ function LatestPost({ blogs }) {
                         >
                           <div className="rounded-xl transition-all hover__image relative overflow-hidden   h-[235px]">
                             <img
-                              className="h-full w-full object-cover"
+                              className="h-full w-full  "
                               src={
                                 process.env.REACT_APP_DOMAIN +
                                 blog?.attributes.images.data[0].attributes.url

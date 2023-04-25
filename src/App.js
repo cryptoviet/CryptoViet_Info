@@ -18,6 +18,7 @@ import CVEcosystem from "./pages/CV_Ecosystem/CVEcosystem";
 import SlugCV from "./pages/CV_Ecosystem/components/SlugCV";
 import Nft from "./pages/Analytics/components/pages/Nft";
 import SlugNft from "./pages/Analytics/components/pages/SlugNft";
+import LibraryPage from "./pages/Library/LibraryPage";
 
 function App() {
   const url = process.env.REACT_APP_DOMAIN;
@@ -136,6 +137,12 @@ function App() {
     {
       path: "vi/analytics/nft",
       element: <Nft blogs={data ? data : ""} nftApi={nftApi} />,
+      children: [],
+    },
+
+    {
+      path: "vi/analytics/thu-vien",
+      element: <LibraryPage blogs={data ? data : ""} />,
       children: [],
     },
   ]);

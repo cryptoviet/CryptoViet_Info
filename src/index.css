@@ -167,6 +167,11 @@ html,body{
   padding-top: 50px;
 }
 
+.post__detail a{
+  color: #2b8ac9;
+  font-weight: 500;
+}
+
 .content__post h4{
   font-size: 20px;
   font-weight: 500;
@@ -300,6 +305,12 @@ input[type=checkbox]:checked:after {
 
 
 figcaption{
-  text-align: center;
-  margin-top: -2rem;
+  text-align: start;
+  margin-top: -0.5rem;
+  font-size: 14px;
+  font-style: italic;
+  color: white;
+  background: #388ac7;
+  padding: 0.5rem 1.5rem;
+  border-radius: 0.5rem;
 }

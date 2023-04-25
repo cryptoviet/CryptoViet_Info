@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import {
   FaTelegramPlane,
@@ -13,6 +13,16 @@ function Sidebar() {
     `${process.env.REACT_APP_DOMAIN}/api/posts?populate=*`
   );
   const categories = useFetch(`${process.env.REACT_APP_DOMAIN}/api/categories`);
+
+  const [isActive, setIsActive] = useState(true); // initial state is true for "Recent Post"
+
+  const handleRecentPostClick = () => {
+    setIsActive(true);
+  };
+
+  const handlePopularPostClick = () => {
+    setIsActive(false);
+  };
 
   const listPost = data?.data.map((blog) => {
     return {
@@ -34,34 +44,46 @@ function Sidebar() {
     <div>
       <div>
         <div className="flex">
-          <h2 className="w-full font-bold ">
-            <span className="border-b-2 border-main pr-2 text-xl">
-              Recent Post
-            </span>
+          <h2
+            className={`w-full cursor-pointer font-bold text-xl ${
+              isActive ? "" : "text-gray"
+            }`}
+            onClick={handleRecentPostClick}
+          >
+            <span>Recent Post</span>
           </h2>
-          <h2 className="w-full font-bold mr-8 ">
-            <span className=" pr-2 text-xl">Popular Post</span>
+          <h2
+            className={`w-full cursor-pointer font-bold mr-8 text-xl ${
+              !isActive ? "" : "text-gray"
+            }`}
+            onClick={handlePopularPostClick}
+          >
+            <span>Popular Post</span>
           </h2>
         </div>
         <div>
-          <ul className="mt-4 text-sm w-full">
-            {listPost
-              ?.reverse()
-              .slice(0, 5)
-              .map((blog) => (
-                <li className="py-[2px]">
-                  <Link
-                    to={`/${blog.slug}`}
-                    className="hover:text-main transition-all"
-                  >
-                    <div className="flex item-center gap-2">
-                      <HiDocumentMagnifyingGlass className="mt-1" />
-                      {blog.title}
-                    </div>
-                  </Link>
-                </li>
-              ))}
-          </ul>
+          {isActive ? (
+            <ul className="mt-4 text-sm w-full">
+              {listPost
+                ?.reverse()
+                .slice(0, 5)
+                .map((blog) => (
+                  <li className="py-[2px]">
+                    <Link
+                      to={`/${blog.slug}`}
+                      className="hover:text-main transition-all"
+                    >
+                      <div className="flex item-center gap-2">
+                        <HiDocumentMagnifyingGlass className="mt-1" />
+                        {blog.title}
+                      </div>
+                    </Link>
+                  </li>
+                ))}
+            </ul>
+          ) : (
+            <p className="h-[180px] mt-4 font-bold">Comming Soon...</p>
+          )}
         </div>
       </div>
       <div className="mt-10">
@@ -87,7 +109,11 @@ function Sidebar() {
                   to={`/vi/analytics/${category.attributes.slug}`}
                   className="bg-[#F0F0F0] hover:bg-main hover:text-white transition-all py-1 px-2 rounded-md"
                 >
-                  {category.attributes.Name} ({postsInCategory.length})
+                  {category.attributes.Title} (
+                  {category.attributes.slug === "thu-vien"
+                    ? listPost?.length
+                    : postsInCategory.length}
+                  )
                 </Link>
               </div>
             );

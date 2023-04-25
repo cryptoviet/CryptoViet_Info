@@ -47,7 +47,7 @@ function Content({ blogs, categories, loading }) {
                       <Link to={`/${blog.slug}`} className="post__content">
                         <div className="h-[250px] hover__image w-full rounded-[8px] overflow-hidden">
                           <img
-                            className="w-full  h-full object-cover"
+                            className="w-full  h-full  "
                             src={loading ? "images/404.svg" : blog.image}
                             alt=""
                           />
@@ -92,7 +92,7 @@ function Content({ blogs, categories, loading }) {
                       <div className="w-[40%] h-[100px] hover__image rounded-[8px] overflow-hidden ">
                         <Link to={`/${blog.slug}`} className="post__content">
                           <img
-                            className="w-full h-full object-cover "
+                            className="w-full h-full   "
                             src={blog.image}
                             alt=""
                           />
