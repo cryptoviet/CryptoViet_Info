@@ -10,7 +10,7 @@ html,body{
 }
 
 .post__detail p{
-    margin-block-start: 1.5rem;
+    margin-block-start: 1rem;
     margin-block-end: 0;
 }
 
@@ -28,6 +28,9 @@ html,body{
 .post__detail img{
     margin: 2rem 0;
     object-fit: contain;
+    margin-left: auto;
+    margin-right: auto;
+
 }
 
 .post__content img {
@@ -156,7 +159,7 @@ html,body{
   font-weight: 600;
   line-height: 1.5;
 
-  padding-top: 50px;
+  padding-top: 30px;
 }
 
 .content__post h5{
@@ -164,7 +167,7 @@ html,body{
   font-weight: 500;
   line-height: 1.5;
 
-  padding-top: 50px;
+  padding-top: 30px;
 }
 
 .post__detail a{
@@ -176,20 +179,20 @@ html,body{
   font-size: 20px;
   font-weight: 500;
   line-height: 1.5;
-  padding-top: 50px;
+  padding-top: 30px;
 }
 
 .content__post h2{
-  font-size: 26px;
+  font-size: 28px;
   font-weight: 500;
   line-height: 1.5;
-  padding-top: 50px;
+  padding-top: 30px;
 }
 .content__post h3{
-  font-size: 24px;
+  font-size: 22px;
   font-weight: 500;
   line-height: 1.5;
-  padding-top: 50px;
+  padding-top: 30px;
 }
 .content__post h1{
   font-size: 26px;
@@ -305,7 +308,7 @@ input[type=checkbox]:checked:after {
 
 
 figcaption{
-  text-align: start;
+  text-align: center;
   margin-top: -0.5rem;
   font-size: 14px;
   font-style: italic;

@@ -39,10 +39,31 @@ function Search() {
           value={keywords}
         />
 
-        <ul className=" mt-2 w-full bg-white shadow-3xl text-sm py-4 pr-10 pl-4 rounded-2xl">
-          <li className="text-gray">#Airdrop</li>
-          <li className="text-gray">#anhtodeptrai</li>
-          <li className="text-gray">#CryptoViet</li>
+        <ul className=" mt-2 flex w-full justify-between bg-white shadow-3xl text-sm p-4 rounded-2xl">
+          <div>
+            <li className="text-gray  cursor-pointer hover:text-item">
+              #Airdrop
+            </li>
+            <li className="text-gray  cursor-pointer hover:text-item">
+              #Layer2
+            </li>
+            <li className="text-gray  cursor-pointer hover:text-item">
+              #KienThuc
+            </li>
+            <li className="text-gray  cursor-pointer hover:text-item">
+              #Metaverse
+            </li>
+          </div>
+          <div className="text-right">
+            <li className="text-gray  cursor-pointer hover:text-item">
+              #Bitcoin
+            </li>
+            <li className="text-gray  cursor-pointer hover:text-item">#Node</li>
+            <li className="text-gray  cursor-pointer hover:text-item">#NFT</li>
+            <li className="text-gray  cursor-pointer hover:text-item">
+              #Report
+            </li>
+          </div>
         </ul>
       </form>
     </li>

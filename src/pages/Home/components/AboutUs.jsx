@@ -32,7 +32,7 @@ function AboutUs() {
                 alt="project"
               ></img>
               <img
-                className="logo-fund absolute top-0 opacity-1 lg:opacity-0"
+                className="logo-fund md:w-auto w-2/6 absolute top-0 opacity-1 lg:opacity-0"
                 src="/grindy1.svg"
                 alt="project"
               ></img>
@@ -50,8 +50,8 @@ function AboutUs() {
                 alt="project"
               ></img>
               <img
-                className="logo-fund absolute top-0  opacity-1 lg:opacity-0"
-                src="/ccv2.svg"
+                className="logo-fund md:w-auto w-2/6 absolute top-0  opacity-1 lg:opacity-0"
+                src="/ccv2.png"
                 alt="project"
               ></img>
             </Link>
@@ -68,7 +68,7 @@ function AboutUs() {
                 alt="project"
               ></img>
               <img
-                className="logo-fund absolute top-0 opacity-1 md:opacity-1 lg:opacity-0"
+                className="logo-fund lg:w-auto  md:w-auto w-2/6 absolute top-0 opacity-1 md:opacity-1 lg:opacity-1"
                 src="/cvv1.svg"
                 alt="project"
               ></img>
