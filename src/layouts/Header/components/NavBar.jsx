@@ -48,7 +48,7 @@ function NavBar() {
     return listSlug.push(`/vi/analytics/nft/${item.attributes.slug}`);
   });
 
-  console.log(listSlug);
+  
 
   flag = listSlug.includes(pathName) ? true : false;
 

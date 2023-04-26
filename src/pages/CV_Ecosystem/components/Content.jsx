@@ -43,7 +43,6 @@ function Content({ blogs, cvEcosystem }) {
               .slice(0, 1)
               .map((blog) => (
                 <>
-                  {/* {console.log(blog)} */}
                   {blog.cv_ecosystem === ecosystem.attributes.Name && (
                     <div className="mt-2.5 lg:w-[50%] mb-12 md:lg:w-[50%]">
                       <Link to={`/${blog.slug}`} className="post__content">
