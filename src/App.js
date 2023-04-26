@@ -32,9 +32,13 @@ function App() {
 
   if (loading)
     return (
-      <p className=" text-[40px] mx-auto items-center pt-[300px]  w-full h-screen text-center ">
-        Loading...
-      </p>
+      <div className="bg-main flex items-center w-full absolute h-full">
+        <img
+          className="mx-auto animate-bounce leading-[50%]"
+          src="/logo_load.svg"
+          alt="load"
+        ></img>
+      </div>
     );
   if (error) return <p>Error...</p>;
 
@@ -147,11 +151,7 @@ function App() {
     },
   ]);
 
-  return (
-    <>
-      <RouterProvider router={router} />
-    </>
-  );
+  return <>{!loading && <RouterProvider router={router} />}</>;
 }
 
 export default App;

@@ -1,12 +1,11 @@
 import React from "react";
 import { BsFillCalendarEventFill } from "react-icons/bs";
 import { FaUserTie } from "react-icons/fa";
-import { Link, useParams } from "react-router-dom";
-import Layout from "../../layouts/Layout";
+import { Link } from "react-router-dom";
 import Container from "../../components/Container";
+import Layout from "../../layouts/Layout";
 
 function LibraryPage({ blogs, categories }) {
-  const { slug } = useParams();
   function reverseString(str) {
     return str.split("-").reverse().join("/");
   }

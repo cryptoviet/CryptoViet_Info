@@ -33,30 +33,13 @@ function AboutUs() {
               ></img>
               <img
                 className="logo-fund md:w-auto w-2/6 absolute top-0 opacity-1 lg:opacity-0"
-                src="/grindy1.svg"
+                src="/grindy1.png"
                 alt="project"
               ></img>
             </Link>
           </div>
+
           <div className="z-10">
-            <Link
-              target="_blank"
-              to="https://cryptoviet.ventures/"
-              title="CryptoViet Ventures"
-            >
-              <img
-                className="relative  opacity-0 lg:opacity-100"
-                src="/cv.svg"
-                alt="project"
-              ></img>
-              <img
-                className="logo-fund md:w-auto w-2/6 absolute top-0  opacity-1 lg:opacity-0"
-                src="/ccv2.png"
-                alt="project"
-              ></img>
-            </Link>
-          </div>
-          <div className="z-10 mr-20">
             <Link
               target="_blank"
               to="https://cryptoviet.info/"
@@ -68,8 +51,27 @@ function AboutUs() {
                 alt="project"
               ></img>
               <img
-                className="logo-fund lg:w-auto  md:w-auto w-2/6 absolute top-0 opacity-1 md:opacity-1 lg:opacity-1"
-                src="/cvv1.svg"
+                className="logo-fund lg:w-auto animate-pulse md:w-auto w-2/6 absolute top-0 opacity-1 md:opacity-1 lg:opacity-0"
+                src="/ccv1.png"
+                alt="project"
+              ></img>
+            </Link>
+          </div>
+
+          <div className="z-10 mr-20">
+            <Link
+              target="_blank"
+              to="https://cryptoviet.ventures/"
+              title="CryptoViet Ventures"
+            >
+              <img
+                className="relative opacity-0 lg:opacity-100"
+                src="/cv.svg"
+                alt="project"
+              ></img>
+              <img
+                className="logo-fund md:w-auto w-2/6 absolute top-0 opacity-1 lg:opacity-0"
+                src="/ccv2.png"
                 alt="project"
               ></img>
             </Link>

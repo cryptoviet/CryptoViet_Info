@@ -305,7 +305,14 @@ input[type=checkbox]:checked:after {
   transform: translate3d(0,40px,-100px);
 
 }
+.logo-fund {
+  transition: all 0.2s linear;
+}
 
+.logo-fund:hover {
+  opacity: 1;
+  transition: all 0.3s linear;
+}
 
 figcaption{
   text-align: center;

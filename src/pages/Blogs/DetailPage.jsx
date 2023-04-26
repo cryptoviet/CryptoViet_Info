@@ -12,6 +12,11 @@ function DetailPage({ blogs }) {
   useEffect(() => {
     const images = document.querySelectorAll(".post__detail img");
 
+    const tagLinks = document.querySelectorAll(".post__detail a");
+    tagLinks.forEach((link) => {
+      link.setAttribute("target", "_blank");
+    });
+
     images.forEach((item) => {
       const string = "https://admin.cryptoviet.info";
       const src = item.getAttribute("src");
