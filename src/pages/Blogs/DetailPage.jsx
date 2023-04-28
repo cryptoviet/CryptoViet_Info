@@ -9,9 +9,22 @@ function DetailPage({ blogs }) {
     return str.split("-").reverse().join("/");
   }
 
+  const tagCode = document.querySelectorAll("pre");
+
+  const copyToClipboard = (event) => {
+    event.stopPropagation();
+    const textCop = event.target.innerText;
+    navigator.clipboard.writeText(textCop);
+
+    event.target.classList.add("clicked");
+  };
+
+  tagCode.forEach((codeElement) => {
+    codeElement.addEventListener("click", copyToClipboard);
+  });
+
   useEffect(() => {
     const images = document.querySelectorAll(".post__detail img");
-
     const tagLinks = document.querySelectorAll(".post__detail a");
     tagLinks.forEach((link) => {
       link.setAttribute("target", "_blank");

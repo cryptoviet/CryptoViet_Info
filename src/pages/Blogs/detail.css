@@ -1,0 +1,25 @@
+pre{
+    background-color: rgb(242, 240, 240);
+    padding: 12px;
+    border:  1px solid #c7c7c7;
+    margin: 12px 0 !important;
+    cursor: pointer;
+    position: relative;
+
+}
+pre.clicked{
+    border-color: rgb(112, 178, 112);
+    background-color: #e4ffe3;
+}
+
+pre.clicked::after{
+    content: "Copied";
+    position: absolute;
+    right: 0;
+    color: green;
+    margin-right: 30px;
+    font-weight: 600;
+}
+pre code{
+    white-space: normal;
+}
