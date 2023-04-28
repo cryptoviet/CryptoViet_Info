@@ -44,22 +44,22 @@ function Sidebar() {
     <div>
       <div>
         <div className="flex">
-          <h2
+          <span
             className={`w-full cursor-pointer font-bold text-xl ${
               isActive ? "" : "text-gray"
             }`}
             onClick={handleRecentPostClick}
           >
             <span>Recent Post</span>
-          </h2>
-          <h2
+          </span>
+          <span
             className={`w-full cursor-pointer font-bold mr-8 text-xl ${
               !isActive ? "" : "text-gray"
             }`}
             onClick={handlePopularPostClick}
           >
             <span>Popular Post</span>
-          </h2>
+          </span>
         </div>
         <div>
           {isActive ? (
@@ -88,11 +88,9 @@ function Sidebar() {
       </div>
       <div className="mt-10">
         <div className="flex">
-          <h2 className="w-full font-bold ">
-            <span className="border-b-2 border-main pr-2 text-xl">
-              Categories
-            </span>
-          </h2>
+          <span className="w-full font-bold ">
+            <span className="pr-2 text-xl">Categories</span>
+          </span>
         </div>
 
         <div className="flex gap-2 flex-wrap mt-4 text-sm">
@@ -121,9 +119,9 @@ function Sidebar() {
         </div>
       </div>
       <div className="mt-10">
-        <h2 className="w-full font-bold">
-          <span className="border-b-2 border-main pr-2 text-xl">Follow Us</span>
-        </h2>{" "}
+        <span className="w-full font-bold">
+          <span className="pr-2 text-xl">Follow Us</span>
+        </span>{" "}
         <div className="flex flex-wrap gap-10 py-8">
           <div className=" text-main">
             <FaTelegramPlane className="text-2xl hover:scale-125 cursor-pointer transition-all hover:opacity-80" />

@@ -9,9 +9,9 @@ function ErrorUrl() {
       <Container>
         <div className="lg:flex mt-12 flex-row flex-none">
           <div className="lg:w-[75%] lg:mr-10 w-full">
-            <h2 className="text-text font-semibold mb-20 text-center text-3xl">
+            <span className="text-text font-semibold mb-20 text-center text-3xl">
               Page not found
-            </h2>
+            </span>
             <div className="w-2/4 mx-auto mt-24">
               <img className="mx-auto w-2/4" src="/images/404.svg" alt="" />
             </div>
