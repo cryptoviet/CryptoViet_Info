@@ -16,7 +16,7 @@ function Banner() {
           </p>
         </div>
 
-        <div className="w-full text-center lg:w-3/5 md:w-2/5 p-20 pt-0 mb-24">
+        <div className="w-full text-center lg:w-3/5 md:w-2/5 lg:p-20 p-4 pt-0 mb-24">
           <Slider />
         </div>
         <div className="blur__bg-head lg:block md:block hidden"></div>
