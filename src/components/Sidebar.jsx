@@ -68,14 +68,14 @@ function Sidebar() {
                 ?.reverse()
                 .slice(0, 5)
                 .map((blog) => (
-                  <li className="py-[2px]">
+                  <li className="py-[2px] relative">
                     <Link
                       to={`/${blog.slug}`}
                       className="hover:text-main transition-all"
                     >
                       <div className="flex item-center gap-2">
                         <HiDocumentMagnifyingGlass className="mt-1" />
-                        {blog.title}
+                        <h6>{blog.title}</h6>
                       </div>
                     </Link>
                   </li>
