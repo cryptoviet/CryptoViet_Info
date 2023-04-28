@@ -10,6 +10,8 @@ function DetailPage({ blogs }) {
   }
 
   const tagCode = document.querySelectorAll("pre");
+  const tag = document.querySelectorAll("code");
+  const div = document.querySelectorAll("div");
 
   const copyToClipboard = (event) => {
     event.stopPropagation();
@@ -22,8 +24,10 @@ function DetailPage({ blogs }) {
   tagCode.forEach((codeElement) => {
     codeElement.addEventListener("click", copyToClipboard);
   });
-
   console.log(tagCode);
+  console.log(tag);
+
+  console.log(div);
 
   useEffect(() => {
     const images = document.querySelectorAll(".post__detail img");
