@@ -23,6 +23,8 @@ function DetailPage({ blogs }) {
     codeElement.addEventListener("click", copyToClipboard);
   });
 
+  console.log(tagCode);
+
   useEffect(() => {
     const images = document.querySelectorAll(".post__detail img");
     const tagLinks = document.querySelectorAll(".post__detail a");
