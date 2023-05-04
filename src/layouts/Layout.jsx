@@ -24,6 +24,10 @@ function Layout({ children }) {
         <meta name="keywords" content="CryptoViet Info" />
         <meta itemprop="name" content="CryptoViet Info" />
         <meta
+          itemprop="image"
+          content="https://res.cloudinary.com/dsynmqxuc/image/upload/v1683188301/thumb_CV_mini_xbih66.png"
+        ></meta>
+        <meta
           itemprop="description"
           content="Trang thông tin - Phân tích - Kiến thức Crypto hàng đầu Việt Nam"
         />
