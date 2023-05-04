@@ -61,16 +61,16 @@ function DetailPage({ blogs }) {
     <Layout>
       <Helmet>
         <title>{blog?.attributes.title}</title>
+        <meta name="keywords" content={blog?.attributes?.SEO?.keywords} />
         <meta
           name="description"
           content={blog?.attributes?.SEO?.metaDescription}
         />
+          <meta itemprop="name" content={blog?.attributes.slug} />
         <meta
           itemprop="description"
           content={blog?.attributes?.SEO?.metaDescription}
         />
-        <meta itemprop="name" content={blog?.attributes.slug} />
-        <meta name="keywords" content={blog?.attributes?.SEO?.keywords} />
         <meta
           itemprop="image"
           content={

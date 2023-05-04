@@ -10,28 +10,29 @@ function Layout({ children }) {
       <Header />
       <ScrollToTop />
       <Helmet>
+        <title>
+          CryptoViet Info - Trang thông tin - Phân tích - Kiến thức Crypto hàng
+          đầu Việt Nam
+        </title>
         <meta
           name="description"
           content="Trang thông tin - Phân tích - Kiến thức Crypto hàng đầu Việt Nam"
         />
 
-        <title>
-          CryptoViet Info - Trang thông tin - Phân tích - Kiến thức Crypto hàng
-          đầu Việt Nam
-        </title>
-        <meta property="og:type" content="website" />
-        <meta name="twitter:card" content="summary_large_image" />
         <meta name="keywords" content="CryptoViet Info" />
         <meta itemprop="name" content="CryptoViet Info" />
-        <meta
-          itemprop="image"
-          content="https://res.cloudinary.com/dsynmqxuc/image/upload/v1683188301/thumb_CV_mini_xbih66.png"
-        ></meta>
+
         <meta
           itemprop="description"
           content="Trang thông tin - Phân tích - Kiến thức Crypto hàng đầu Việt Nam"
         />
+        <meta
+          itemprop="image"
+          content="https://res.cloudinary.com/dsynmqxuc/image/upload/v1683188301/thumb_CV_mini_xbih66.png"
+        ></meta>
+
         <meta property="og:url" content="https://cryptoviet.info" />
+        <meta property="og:title" content="CryptoViet Info" />
         <meta
           property="og:description"
           content="Trang thông tin - Phân tích - Kiến thức Crypto hàng đầu Việt Nam"
@@ -40,9 +41,12 @@ function Layout({ children }) {
           property="og:image"
           content="https://res.cloudinary.com/dsynmqxuc/image/upload/v1683188301/thumb_CV_mini_xbih66.png"
         />
-        <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
-        <meta property="og:image:secure_url" content="CryptoViet Info" />
+        <meta property="og:image:width" content="1200" />
+        <meta
+          property="og:image:secure_url"
+          content="https://res.cloudinary.com/dsynmqxuc/image/upload/v1683188301/thumb_CV_mini_xbih66.png"
+        />
 
         <meta name="twitter:title" content="CryptoViet Info" />
         <meta
