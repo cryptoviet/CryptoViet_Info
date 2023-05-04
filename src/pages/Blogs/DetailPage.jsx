@@ -4,6 +4,8 @@ import { Link, useParams } from "react-router-dom";
 import ErrorPage from "../../components/ErrorPage";
 import Sidebar from "../../components/Sidebar";
 import Layout from "../../layouts/Layout";
+import { Helmet } from "react-helmet";
+
 function DetailPage({ blogs }) {
   function reverseString(str) {
     return str.split("-").reverse().join("/");
@@ -53,8 +55,60 @@ function DetailPage({ blogs }) {
     html: true,
   });
 
+  console.log(blog.attributes.SEO);
+
   return (
     <Layout>
+      <Helmet>
+        <title>{blog?.attributes.title}</title>
+        <meta
+          name="description"
+          content={blog?.attributes?.SEO?.metaDescription}
+        />
+        <meta
+          itemprop="description"
+          content={blog?.attributes?.SEO?.metaDescription}
+        />
+        <meta itemprop="name" content={blog?.attributes.slug} />
+        <meta name="keywords" content={blog?.attributes?.SEO?.keywords} />
+        <meta
+          itemprop="image"
+          content={
+            process.env.REACT_APP_DOMAIN +
+            blog?.attributes.images.data[0].attributes.url
+          }
+        />
+        <meta property="og:url" content={blog?.attributes?.SEO?.canonicalURL} />
+        <meta property="og:title" content={blog?.attributes.title} />
+        <meta
+          property="og:description"
+          content={blog?.attributes?.SEO?.metaDescription}
+        />
+        <meta
+          property="og:image"
+          content={
+            process.env.REACT_APP_DOMAIN +
+            blog?.attributes.images.data[0].attributes.url
+          }
+        />
+        <meta property="og:image:height" content="628" />
+        <meta property="og:image:width" content="1200" />
+
+        <meta name="twitter:title" content={blog?.attributes.title} />
+        <meta
+          name="twitter:description"
+          content={blog?.attributes?.SEO?.metaDescription}
+        />
+
+        <meta
+          name="twitter:image"
+          content={
+            process.env.REACT_APP_DOMAIN +
+            blog?.attributes.images.data[0].attributes.url
+          }
+        />
+        <link rel="canonical" href={blog?.attributes?.SEO?.canonicalURL}></link>
+      </Helmet>
       <div className="container mx-auto mb-40">
         {blog !== undefined ? (
           <div className="lg:flex flex-row flex-none mt-12">
@@ -120,6 +174,7 @@ function DetailPage({ blogs }) {
         ) : (
           <ErrorPage />
         )}
+        
       </div>
     </Layout>
   );
