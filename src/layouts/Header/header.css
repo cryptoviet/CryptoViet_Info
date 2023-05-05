@@ -118,7 +118,7 @@
   }
   
   #nav-icon3 span:nth-child(1) {
-    top: 0px;
+    top: -1px;
   }
   
   #nav-icon3 span:nth-child(2),

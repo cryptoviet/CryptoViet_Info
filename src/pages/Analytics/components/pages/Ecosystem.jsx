@@ -5,6 +5,7 @@ import Sidebar from "../../../../components/Sidebar";
 import Layout from "../../../../layouts/Layout";
 import { FaUserTie } from "react-icons/fa";
 import { BsFillCalendarEventFill } from "react-icons/bs";
+import { Helmet } from "react-helmet";
 
 function Ecosystem({ blogs, ecosystems }) {
   function reverseString(str) {
@@ -30,6 +31,55 @@ function Ecosystem({ blogs, ecosystems }) {
 
   return (
     <Layout>
+      <Helmet>
+        <title>Hệ sinh thái - Crypto - Blockchain - Bitcoin</title>
+        <meta
+          name="description"
+          content="Trang tổng hợp các hệ sinh thái Crypto - Blockchain dành cho người tham gia thị trường tiền mã hoá - Bitcoin - Ethereum - BNB - Aptos - Arbitrum - Shardeum"
+        />
+
+        <meta name="keywords" content="hệ sinh thái crypto" />
+        <meta itemprop="name" content="CryptoViet Info" />
+
+        <meta
+          itemprop="description"
+          content="Trang tổng hợp các hệ sinh thái Crypto - Blockchain dành cho người tham gia thị trường tiền mã hoá - Bitcoin - Ethereum - BNB - Aptos - Arbitrum - Shardeum"
+        />
+        <meta
+          itemprop="image"
+          content="https://res.cloudinary.com/dsynmqxuc/image/upload/v1683188301/thumb_CV_mini_xbih66.png"
+        ></meta>
+
+        <meta property="og:url" content="https://cryptoviet.info" />
+        <meta property="og:title" content="CryptoViet Info" />
+        <meta
+          property="og:description"
+          content="Trang tổng hợp các hệ sinh thái Crypto - Blockchain dành cho người tham gia thị trường tiền mã hoá - Bitcoin - Ethereum - BNB - Aptos - Arbitrum - Shardeum"
+        />
+        <meta
+          property="og:image"
+          content="https://res.cloudinary.com/dsynmqxuc/image/upload/v1683188301/thumb_CV_mini_xbih66.png"
+        />
+        <meta property="og:image:height" content="630" />
+        <meta property="og:image:width" content="1200" />
+        <meta
+          property="og:image:secure_url"
+          content="https://res.cloudinary.com/dsynmqxuc/image/upload/v1683188301/thumb_CV_mini_xbih66.png"
+        />
+
+        <meta name="twitter:title" content="CryptoViet Info" />
+        <meta
+          name="twitter:description"
+          content="Trang tổng hợp các hệ sinh thái Crypto - Blockchain dành cho người tham gia thị trường tiền mã hoá - Bitcoin - Ethereum - BNB - Aptos - Arbitrum - Shardeum"
+        />
+        <meta
+          name="twitter:image"
+          content="https://res.cloudinary.com/dsynmqxuc/image/upload/v1683188301/thumb_CV_mini_xbih66.png"
+        />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="robots" content="max-image-preview:large" />
+        <link rel="canonical" href="https://cryptoviet.info" />
+      </Helmet>
       <Container>
         <div className="lg:flex flex-row flex-none mt-10">
           <div className="lg:w-[75%] w-full z-10">

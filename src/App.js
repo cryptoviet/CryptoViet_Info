@@ -12,17 +12,21 @@ import HomePage from "./pages/Home/HomePage";
 
 import ErrorUrl from "./components/Errors/ErrorUrl";
 import SearchPage from "./layouts/Header/components/SearchPage";
-import SlugEcosystem from "./pages/Analytics/components/pages/SlugEcosystem";
-import SlugAnalytics from "./pages/Analytics/components/SlugAnalytics";
-import CVEcosystem from "./pages/CV_Ecosystem/CVEcosystem";
-import SlugCV from "./pages/CV_Ecosystem/components/SlugCV";
 import Nft from "./pages/Analytics/components/pages/Nft";
+import SlugEcosystem from "./pages/Analytics/components/pages/SlugEcosystem";
 import SlugNft from "./pages/Analytics/components/pages/SlugNft";
+import SlugAnalytics from "./pages/Analytics/components/SlugAnalytics";
+import SlugCV from "./pages/CV_Ecosystem/components/SlugCV";
+import CVEcosystem from "./pages/CV_Ecosystem/CVEcosystem";
 import LibraryPage from "./pages/Library/LibraryPage";
 
 function App() {
   const url = process.env.REACT_APP_DOMAIN;
-  const { loading, error, data } = useFetch(`${url}/api/posts?populate=* `);
+
+  const { loading, error, data, total } = useFetch(`${url}/api/posts`, {
+    populate: "*",
+    "pagination[page]": 1,
+  });
 
   const nftApi = useFetch(`${process.env.REACT_APP_DOMAIN}/api/nfts`);
 
@@ -32,7 +36,7 @@ function App() {
 
   if (loading)
     return (
-      <div className="bg-main flex items-center w-full absolute h-full">
+      <div className="bg-main2 flex items-center w-full absolute h-full">
         <img
           className="mx-auto animate-bounce leading-[50%]"
           src="/logo_load.svg"
@@ -146,12 +150,12 @@ function App() {
 
     {
       path: "vi/analytics/thu-vien",
-      element: <LibraryPage blogs={data ? data : ""} />,
+      element: <LibraryPage blogs={data ? data : ""} total={total} />,
       children: [],
     },
   ]);
 
-  return <>{!loading && <RouterProvider router={router} />}</>;
+  return <>{!loading && <RouterProvider router={router}></RouterProvider>}</>;
 }
 
 export default App;
