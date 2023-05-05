@@ -1,16 +1,33 @@
-import React from "react";
+import React, { useState } from "react";
+import { AiOutlineLoading3Quarters } from "react-icons/ai";
 import { BsFillCalendarEventFill } from "react-icons/bs";
 import { FaUserTie } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import Container from "../../components/Container";
+import useFetch from "../../hooks/useFetch";
+import useScrollEnd from "../../hooks/useScrollEnd";
 import Layout from "../../layouts/Layout";
+function LibraryPage({ blogs, total }) {
+  const url = process.env.REACT_APP_DOMAIN;
+  const [totalPage, setTotalPage] = useState(total - 9);
 
-function LibraryPage({ blogs, categories }) {
+  const { data, loading } = useFetch(`${url}/api/posts`, {
+    populate: "*",
+    "pagination[start]": totalPage,
+    "pagination[limit]": total,
+  });
+
+  function handleScrollEnd() {
+    setTotalPage(totalPage - 9);
+  }
+
+  useScrollEnd(handleScrollEnd, totalPage);
+
   function reverseString(str) {
     return str.split("-").reverse().join("/");
   }
 
-  const listPost = blogs.data.map((blog) => {
+  const listPost = data?.data.map((blog) => {
     return {
       categories: blog.attributes?.category?.data?.attributes?.slug,
       title: blog.attributes.title,
@@ -39,13 +56,14 @@ function LibraryPage({ blogs, categories }) {
           </h2>
           <div className="w-full">
             <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1  gap-10 lg:pr-10 md:pr-10">
-              {listPost.reverse().map((blog) => (
+              {listPost?.reverse().map((blog) => (
                 <>
                   <div className="z-10">
                     <Link to={`/${blog.slug}`} className="post__content">
                       <div className="h-[250px] hover__image w-full rounded-[8px] overflow-hidden">
                         <img
-                          className="w-full  h-full  "
+                          loading="lazy"
+                          className="w-full  h-full"
                           src={blog?.image}
                           alt=""
                         />
@@ -74,6 +92,12 @@ function LibraryPage({ blogs, categories }) {
                 </>
               ))}
             </div>
+
+            {loading && (
+              <span className={`mt-20 block ${totalPage < 0 && "hidden"}`}>
+                <AiOutlineLoading3Quarters className=" animate-spin text-main text-3xl mx-auto" />
+              </span>
+            )}
           </div>
         </div>
 

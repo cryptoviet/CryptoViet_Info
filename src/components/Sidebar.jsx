@@ -9,12 +9,15 @@ import {
 import { HiDocumentMagnifyingGlass } from "react-icons/hi2";
 import useFetch from "../hooks/useFetch";
 function Sidebar() {
-  const { data } = useFetch(
-    `${process.env.REACT_APP_DOMAIN}/api/posts?populate=*`
-  );
+  const { data } = useFetch(`${process.env.REACT_APP_DOMAIN}/api/posts`, {
+    populate: "*",
+    "sort[0]": "id%3Adesc",
+    "pagination[start]": 0,
+    "pagination[limit]": 5,
+  });
   const categories = useFetch(`${process.env.REACT_APP_DOMAIN}/api/categories`);
 
-  const [isActive, setIsActive] = useState(true); // initial state is true for "Recent Post"
+  const [isActive, setIsActive] = useState(true);
 
   const handleRecentPostClick = () => {
     setIsActive(true);
@@ -64,22 +67,19 @@ function Sidebar() {
         <div>
           {isActive ? (
             <ul className="mt-4 text-sm w-full">
-              {listPost
-                ?.reverse()
-                .slice(0, 5)
-                .map((blog) => (
-                  <li className="py-[2px] relative">
-                    <Link
-                      to={`/${blog.slug}`}
-                      className="hover:text-main transition-all"
-                    >
-                      <div className="flex item-center gap-2">
-                        <HiDocumentMagnifyingGlass className="mt-1" />
-                        <h6>{blog.title}</h6>
-                      </div>
-                    </Link>
-                  </li>
-                ))}
+              {listPost?.map((blog) => (
+                <li className="py-[2px] relative">
+                  <Link
+                    to={`/${blog.slug}`}
+                    className="hover:text-main transition-all"
+                  >
+                    <div className="flex item-center gap-2">
+                      <HiDocumentMagnifyingGlass className="mt-1 w-5" />
+                      <h6>{blog.title}</h6>
+                    </div>
+                  </Link>
+                </li>
+              ))}
             </ul>
           ) : (
             <p className="h-[180px] mt-4 font-bold">Comming Soon...</p>
@@ -95,23 +95,24 @@ function Sidebar() {
 
         <div className="flex gap-2 flex-wrap mt-4 text-sm">
           {categories?.data?.data.map((category) => {
-            const postsInCategory =
-              listPost?.filter(
-                (post) =>
-                  post.categories !== undefined &&
-                  post?.categories.includes(category.attributes.Name)
-              ) || [];
+            // const postsInCategory =
+            //   listPost?.filter(
+            //     (post) =>
+            //       post.categories !== undefined &&
+            //       post?.categories.includes(category.attributes.Name)
+            //   ) || [];
             return (
               <div key={category.id} className="my-2">
                 <Link
                   to={`/vi/analytics/${category.attributes.slug}`}
                   className="bg-[#F0F0F0] hover:bg-main hover:text-white transition-all py-1 px-2 rounded-md"
                 >
-                  {category.attributes.Title} (
+                  {category.attributes.Title}
+                  {/* (
                   {category.attributes.slug === "thu-vien"
-                    ? listPost?.length
+                    ? total
                     : postsInCategory.length}
-                  )
+                  ) */}
                 </Link>
               </div>
             );
@@ -137,14 +138,12 @@ function Sidebar() {
           </div>
         </div>
       </div>
-
       <div className="mt-20 relative w-full lg:mb-0 md:mb-0 mb-8 rounded-xl overflow-hidden h-[412px]">
         <img className="w-full rounded-xl " src="/images/promote1.svg" alt="" />
         <spam className="absolute w-full animate-ping top-0 leading-[380px] text-white font-bold text-2xl drop-shadow-2xl text-center">
           CryptoViet
         </spam>
       </div>
-
       <div className="w-full rounded-xl overflow-hidden h-[412px]">
         <img className="w-full rounded-xl" src="/images/promote2.svg" alt="" />
       </div>

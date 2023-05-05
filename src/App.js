@@ -25,7 +25,9 @@ function App() {
 
   const { loading, error, data, total } = useFetch(`${url}/api/posts`, {
     populate: "*",
-    "pagination[page]": 1,
+    "sort[0]": "id%3Adesc",
+    "pagination[start]": 0,
+    "pagination[limit]": 50,
   });
 
   const nftApi = useFetch(`${process.env.REACT_APP_DOMAIN}/api/nfts`);
@@ -104,12 +106,7 @@ function App() {
 
     {
       path: "vi/analytics/:slug",
-      element: (
-        <SlugAnalytics
-          blogs={data ? data : ""}
-          ecosystems={ecosystems ? ecosystems : ""}
-        />
-      ),
+      element: <SlugAnalytics />,
       children: [],
     },
 

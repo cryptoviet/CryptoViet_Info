@@ -1,15 +1,47 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { AiOutlineLoading3Quarters } from "react-icons/ai";
 import { BsFillCalendarEventFill } from "react-icons/bs";
 import { FaUserTie } from "react-icons/fa";
 import { Link, useParams } from "react-router-dom";
 import Container from "../../../components/Container";
 import ErrorPage from "../../../components/ErrorPage";
+import useFetch from "../../../hooks/useFetch";
+import useScrollEnd from "../../../hooks/useScrollEnd";
 import Layout from "../../../layouts/Layout";
-function SlugAnalytics({ blogs, categories }) {
+function SlugAnalytics() {
   const { slug } = useParams();
   function reverseString(str) {
     return str.split("-").reverse().join("/");
   }
+
+  const [totalPage, setTotalPage] = useState(0);
+  const [totalStart, setTotalStart] = useState(0);
+
+  const { data, total, loading } = useFetch(
+    `${process.env.REACT_APP_DOMAIN}/api/posts`,
+    {
+      populate: "*",
+      "filters[category][slug][$eq]": slug,
+      "pagination[start]": totalPage,
+      "pagination[limit]": totalStart,
+    }
+  );
+
+  const handleScrollEnd = () => {
+    setTotalPage((prevTotalPage) =>
+      prevTotalPage > 0 ? prevTotalPage - 9 : 0
+    );
+  };
+  useScrollEnd(handleScrollEnd, totalPage);
+  useEffect(() => {
+    const newTotalPage = total - 9;
+    setTotalStart(total);
+    setTotalPage((prevTotalPage) =>
+      prevTotalPage !== 0 && prevTotalPage > 0
+        ? prevTotalPage - 9
+        : newTotalPage
+    );
+  }, [total]);
 
   const languageVi = [
     {
@@ -40,7 +72,7 @@ function SlugAnalytics({ blogs, categories }) {
     "/vi/analytics/thu-vien",
     "/vi/analytics/report",
   ];
-  const listPost = blogs.data.map((blog) => {
+  const listPost = data?.data.map((blog) => {
     return {
       categories: blog.attributes?.category?.data?.attributes?.slug,
       title: blog.attributes.title,
@@ -57,6 +89,7 @@ function SlugAnalytics({ blogs, categories }) {
       createdAt: blog.attributes.createdAt,
     };
   });
+  console.log();
 
   return (
     <Layout>
@@ -70,47 +103,48 @@ function SlugAnalytics({ blogs, categories }) {
           <div className="w-full">
             {checkSlug.includes(`/vi/analytics/${slug}`) ? (
               <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1  gap-10 lg:pr-10 md:pr-10">
-                {listPost
-                  .filter(
-                    (eco) =>
-                      eco.categories !== undefined &&
-                      eco.categories.includes(slug)
-                  )
-                  .reverse()
-                  .map((blog) => (
-                    <>
-                      <div className="z-10">
-                        <Link to={`/${blog.slug}`} className="post__content">
-                          <div className="h-[250px] hover__image w-full rounded-[8px] overflow-hidden">
-                            <img
-                              className="w-full  h-full  "
-                              src={blog?.image}
-                              alt=""
-                            />
-                          </div>
-
-                          <h2 className="font-bold lg:h-14 md:h-14 lg:text-xl md:text-lg text-base my-2 hover:text-main transition-all">
-                            {blog.title}
-                          </h2>
-                        </Link>
-
-                        <div className="flex justify-between mt-4">
-                          <span className="flex pb-2 leading-[14px] font-light  text-sm text-text">
-                            <FaUserTie className="mr-1" />
-                            <span className="block font-semibold">
-                              {blog?.author}
-                            </span>
-                          </span>
-                          <span className="font-light flex pb-2 leading-[14px] text-sm text-text">
-                            <BsFillCalendarEventFill className="mr-1" />
-                            <span className="block">
-                              {reverseString(blog.createdAt.substring(0, 10))}
-                            </span>
-                          </span>
+                {listPost?.reverse().map((blog) => (
+                  <>
+                    <div className="z-10">
+                      <Link to={`/${blog.slug}`} className="post__content">
+                        <div className="h-[250px] hover__image w-full rounded-[8px] overflow-hidden">
+                          <img
+                            className="w-full  h-full  "
+                            src={blog?.image}
+                            alt=""
+                          />
                         </div>
+
+                        <h2 className="font-bold lg:h-14 md:h-14 lg:text-xl md:text-lg text-base my-2 hover:text-main transition-all">
+                          {blog.title}
+                        </h2>
+                      </Link>
+
+                      <div className="flex justify-between mt-4">
+                        <span className="flex pb-2 leading-[14px] font-light  text-sm text-text">
+                          <FaUserTie className="mr-1" />
+                          <span className="block font-semibold">
+                            {blog?.author}
+                          </span>
+                        </span>
+                        <span className="font-light flex pb-2 leading-[14px] text-sm text-text">
+                          <BsFillCalendarEventFill className="mr-1" />
+                          <span className="block">
+                            {reverseString(blog.createdAt.substring(0, 10))}
+                          </span>
+                        </span>
                       </div>
-                    </>
-                  ))}
+                    </div>
+
+                    {loading && (
+                      <span
+                        className={`mt-20 block ${totalPage < 0 && "hidden"}`}
+                      >
+                        <AiOutlineLoading3Quarters className=" animate-spin text-main text-3xl mx-auto" />
+                      </span>
+                    )}
+                  </>
+                ))}
               </div>
             ) : (
               <ErrorPage />

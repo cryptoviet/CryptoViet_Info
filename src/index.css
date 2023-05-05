@@ -6,9 +6,26 @@
 @import "./layouts/Header/header.css";
 @import "./pages/Blogs/detail.css";
 html,body{
-  font-family: 'Open Sans', sans-serif;
+  font-family: 'Open Sans', sans-serif !important;
+}
+html::-webkit-scrollbar-track{
+  -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+	border-radius: 7px;
+	background-color: #F5F5F5;
 }
 
+html::-webkit-scrollbar
+{
+	width: 8px;
+	background-color: #F5F5F5;
+}
+
+html::-webkit-scrollbar-thumb
+{
+	border-radius: 7px;
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+	background-color: #2A60A9;
+}
 .post__detail p{
     margin-block-start: 1rem;
     margin-block-end: 0;
@@ -26,10 +43,11 @@ html,body{
 }
 
 .post__detail img{
-    margin: 2rem 0;
+    margin: 2rem 0 1rem 0;
     object-fit: contain;
     margin-left: auto;
     margin-right: auto;
+    border-radius: 7px;
 
 }
 
@@ -314,15 +332,16 @@ input[type=checkbox]:checked:after {
   transition: all 0.3s linear;
 }
 
-figcaption{
+figcaption, figcaption span{
   text-align: center;
   margin-top: -0.5rem;
   font-size: 14px;
   font-style: italic;
-  color: white;
+  color: white !important;
   background: #388ac7;
   padding: 0.5rem 1.5rem;
   border-radius: 0.5rem;
+  font-family: 'Open Sans', sans-serif !important;
 }
 
 

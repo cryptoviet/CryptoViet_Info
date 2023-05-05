@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
 
-function ScrollToTop() {
+function AutoScrollToTop() {
   const routePath = useLocation();
   const onTop = () => {
     window.scrollTo(0, 0);
@@ -13,4 +13,4 @@ function ScrollToTop() {
   return null;
 }
 
-export default ScrollToTop;
+export default AutoScrollToTop;

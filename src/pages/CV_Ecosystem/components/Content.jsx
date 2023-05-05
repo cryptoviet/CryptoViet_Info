@@ -2,9 +2,21 @@ import React from "react";
 import { BsFillCalendarEventFill } from "react-icons/bs";
 import { FaUserTie } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import useFetch from "../../../hooks/useFetch";
 
 function Content({ blogs, cvEcosystem }) {
-  const listPost = blogs.data.map((blog) => {
+  const { data } = useFetch(`${process.env.REACT_APP_DOMAIN}/api/posts`, {
+    populate: "*",
+    "filters[cv_ecosystem][$or][0][slug][$eq]": "grindy-technologies",
+    "filters[cv_ecosystem][$or][1][slug][$eq]": "crypto-viet-ventures",
+
+    "sort[0]": "id%3Adesc",
+    // "pagination[start]": 0,
+    // "pagination[limit]": 50,
+  });
+
+  console.log(data);
+  const listPost = data?.data.map((blog) => {
     return {
       categories: blog.attributes?.category?.data?.attributes?.Name,
       title: blog.attributes.title,
@@ -34,12 +46,11 @@ function Content({ blogs, cvEcosystem }) {
           </h2>
           <div className="mt-6 flex lg:flex-row md:flex-row flex-col gap-5">
             {listPost
-              .filter(
+              ?.filter(
                 (cat) =>
-                  cat.cv_ecosystem !== undefined &&
+                  cat?.cv_ecosystem !== undefined &&
                   cat?.cv_ecosystem === ecosystem.attributes.Name
               )
-              .reverse()
               .slice(0, 1)
               .map((blog) => (
                 <>

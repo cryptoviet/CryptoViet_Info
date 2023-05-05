@@ -68,7 +68,7 @@ function LatestPost({ blogs }) {
           className="mySwiper"
           modules={[Navigation, Autoplay]}
         >
-          {blogs?.data.map((blog) => (
+          {blogs?.data?.map((blog) => (
             <>
               {blog?.attributes?.category?.data !== null && (
                 <>

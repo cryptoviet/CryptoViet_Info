@@ -66,7 +66,7 @@ function DetailPage({ blogs }) {
           name="description"
           content={blog?.attributes?.SEO?.metaDescription}
         />
-          <meta itemprop="name" content={blog?.attributes.slug} />
+        <meta itemprop="name" content={blog?.attributes.slug} />
         <meta
           itemprop="description"
           content={blog?.attributes?.SEO?.metaDescription}
@@ -148,7 +148,7 @@ function DetailPage({ blogs }) {
                     {blog.attributes.description}
                   </p>
                   <img
-                    className="h-auto w-full object-contain"
+                    className="h-auto w-full rounded-lg object-contain"
                     src={
                       process.env.REACT_APP_DOMAIN +
                       blog?.attributes.images.data[0].attributes.url
@@ -174,7 +174,6 @@ function DetailPage({ blogs }) {
         ) : (
           <ErrorPage />
         )}
-        
       </div>
     </Layout>
   );
