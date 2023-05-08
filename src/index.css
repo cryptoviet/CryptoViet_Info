@@ -295,7 +295,7 @@ input[type=checkbox]:checked:after {
 #slider label {
   margin: auto;
   background-color: aliceblue;
-  border-radius: 4px;
+  border-radius: 14px;
   position: absolute;
   left: 0; right: 0;
   cursor: pointer;

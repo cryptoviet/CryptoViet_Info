@@ -5,7 +5,7 @@ function AboutUs() {
   return (
     <div className="container mx-auto mt-24 text-center">
       <div className="">
-        <h1 className="font-bold text-[54px]  ">About us</h1>
+        <h1 className="font-bold text-[54px]  ">Về chúng tôi</h1>
 
         <p className="font-semibold text-base w-[90%] mx-auto">
           <span className="p-10 ">

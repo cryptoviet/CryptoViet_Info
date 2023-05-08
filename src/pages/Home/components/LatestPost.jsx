@@ -133,8 +133,8 @@ function LatestPost({ blogs }) {
         </Swiper>
 
         <Link to="/vi/analytics" className="flex text-text">
-          <span className="bg-white rounded-lg hover:bg-main hover:text-white transition-all py-2 mx-auto px-4 font-bold text-sm">
-            GO TO RESEARCH
+          <span className="bg-white rounded-lg uppercase hover:bg-main hover:text-white transition-all py-2 mx-auto px-4 font-bold text-sm">
+            Khám phá ngay
           </span>
         </Link>
       </div>

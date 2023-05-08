@@ -22,7 +22,7 @@ function Onchain() {
             className="text-white text-right mt-12"
           >
             <span className="bg-black rounded-lg text-sm hover:bg-main transition-all uppercase mr-[26px] px-3 py-2">
-              Go to onchain
+              Xem chi tiết
             </span>
           </Link>
           <img src="onchain2.svg" className="mt-2" alt="" />
