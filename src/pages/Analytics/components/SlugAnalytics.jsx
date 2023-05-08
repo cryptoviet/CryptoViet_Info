@@ -57,11 +57,6 @@ function SlugAnalytics() {
       vi: "Airdrop",
       slug: "airdrop",
     },
-
-    {
-      vi: "Report",
-      slug: "report",
-    },
   ];
 
   const checkSlug = [
@@ -70,7 +65,6 @@ function SlugAnalytics() {
     "/vi/analytics/nft",
     "/vi/analytics/kien-thuc",
     "/vi/analytics/thu-vien",
-    "/vi/analytics/report",
   ];
   const listPost = data?.data.map((blog) => {
     return {
@@ -89,7 +83,6 @@ function SlugAnalytics() {
       createdAt: blog.attributes.createdAt,
     };
   });
-  console.log();
 
   return (
     <Layout>

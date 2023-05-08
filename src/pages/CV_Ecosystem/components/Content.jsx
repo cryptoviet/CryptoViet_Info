@@ -15,7 +15,6 @@ function Content({ blogs, cvEcosystem }) {
     // "pagination[limit]": 50,
   });
 
-  console.log(data);
   const listPost = data?.data.map((blog) => {
     return {
       categories: blog.attributes?.category?.data?.attributes?.Name,
@@ -51,7 +50,7 @@ function Content({ blogs, cvEcosystem }) {
                   cat?.cv_ecosystem !== undefined &&
                   cat?.cv_ecosystem === ecosystem.attributes.Name
               )
-              .slice(0, 1)
+              ?.slice(0, 1)
               .map((blog) => (
                 <>
                   {blog.cv_ecosystem === ecosystem.attributes.Name && (
@@ -91,13 +90,10 @@ function Content({ blogs, cvEcosystem }) {
 
             <div className="flex md:w-[50%] lg:w-[50%] flex-col gap-4 h-[380px]  mt-2.5">
               {listPost
-                .filter(
-                  (cat) =>
-                    cat.categories !== null &&
-                    cat?.categories === ecosystem.attributes.Name
+                ?.filter(
+                  (cat) => cat?.cv_ecosystem === ecosystem.attributes.Name
                 )
-                .reverse()
-                .slice(1, 4)
+                ?.slice(1, 4)
                 .map((blog) => (
                   <>
                     <div className="flex flex-row gap-4 ">

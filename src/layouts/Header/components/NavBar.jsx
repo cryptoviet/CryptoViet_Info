@@ -34,14 +34,12 @@ function NavBar() {
   const listEcosystem = ecosystems && ecosystems?.data;
 
   const pathName = window.location.pathname;
-
   const listSlug = [
     "/vi/analytics",
     "/vi/analytics/he-sinh-thai",
     "/vi/analytics/airdrop",
     "/vi/analytics/nft",
     "/vi/analytics/kien-thuc",
-    "/vi/analytics/report",
     "/vi/analytics/thu-vien",
     "/vi/analytics/he-sinh-thai-cryptoviet",
   ];
@@ -96,7 +94,7 @@ function NavBar() {
                   </li>
                   <li>
                     <Link
-                      to="/vi/analytics/report"
+                      to="/vi/report"
                       className="block py-2 pl-3 pr-4 hover:text-main transition-all"
                     >
                       <span
@@ -183,13 +181,15 @@ function NavBar() {
               </li>
               <li>
                 <Link
-                  to="/vi/analytics/report"
+                  to="/vi/report"
                   className="block py-2 pl-3 pr-4 hover:text-main transition-all"
                 >
                   <span
                     className={`${
                       flag && "text-gray hover:text-main"
-                    } flex items-center text-base font-semibold gap-1`}
+                    } flex items-center text-base font-semibold gap-1  ${
+                      pathName === "/vi/report" && "!text-main"
+                    } `}
                   >
                     <RiBarChart2Fill />
                     Report
@@ -220,7 +220,9 @@ function NavBar() {
                   <span
                     className={` ${
                       flag && "text-gray hover:text-main"
-                    } flex items-center text-base font-semibold gap-1 `}
+                    } flex items-center text-base font-semibold gap-1 ${
+                      pathName === "/vi/he-sinh-thai-cryptoviet" && "!text-main"
+                    }`}
                   >
                     <GiSolarSystem />
                     Ecosystem

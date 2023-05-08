@@ -19,6 +19,7 @@ import SlugAnalytics from "./pages/Analytics/components/SlugAnalytics";
 import SlugCV from "./pages/CV_Ecosystem/components/SlugCV";
 import CVEcosystem from "./pages/CV_Ecosystem/CVEcosystem";
 import LibraryPage from "./pages/Library/LibraryPage";
+import ReportPage from "./pages/Report/ReportPage";
 
 function App() {
   const url = process.env.REACT_APP_DOMAIN;
@@ -72,6 +73,19 @@ function App() {
       path: "/vi/analytics",
       element: (
         <AnalyticPage
+          exact
+          loading={loading}
+          blogs={data ? data : ""}
+          categories={categories ? categories : ""}
+        />
+      ),
+      children: [],
+    },
+
+    {
+      path: "/vi/report",
+      element: (
+        <ReportPage
           exact
           loading={loading}
           blogs={data ? data : ""}
