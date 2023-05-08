@@ -8,7 +8,7 @@ import {
 function Footer() {
   return (
     <>
-      <div className="bg-main py-2 mt-28 relative z-30">
+      <div className="bg-main py-2 mt-28 relative z-10">
         <div className="container items-center mx-auto flex flex-col lg:flex-row justify-between">
           <span className="text-white text-[16px] mt-2 lg:mt-0 text-center font-bold lg:text-2xl">
             Subscribe To Our Newsletter

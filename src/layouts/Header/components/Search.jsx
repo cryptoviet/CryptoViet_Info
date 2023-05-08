@@ -17,7 +17,7 @@ function Search() {
   };
 
   return (
-    <li className="search__icon">
+    <li className="search__icon lg:block md:block hidden">
       <Link
         to="#"
         className="block py-2 pl-3 mt-1 pr-4 hover:text-main transition-all"

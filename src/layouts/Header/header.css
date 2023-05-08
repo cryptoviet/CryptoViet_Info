@@ -19,8 +19,29 @@
     left: 10px;
     z-index: 1;
   }
+.transition-4{
+  transition: all .4s;
+}
 
-
+.transition-hover {
+  transition: margin-bottom linear 0.2s;
+}
+  .uk-menu1 {
+    width: 60%;
+    color: #a9aaab;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 49;
+  }
+  .uk-menu2 {
+    color: #a9aaab;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 49;
+    height: 100%;
+  }
 
   .search{
     z-index: 1;

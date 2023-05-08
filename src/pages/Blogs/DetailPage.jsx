@@ -10,7 +10,6 @@ function DetailPage({ blogs }) {
   function reverseString(str) {
     return str.split("-").reverse().join("/");
   }
-
   const tagCode = document.getElementsByTagName("pre");
 
   const copyToClipboard = (event) => {
@@ -45,7 +44,7 @@ function DetailPage({ blogs }) {
   const { slug } = useParams();
   let blog = {};
   if (blog) {
-    let arr = blogs.data.filter((blog) => blog?.attributes?.slug === slug);
+    let arr = blogs?.data?.filter((blog) => blog?.attributes?.slug === slug);
     blog = arr[0];
   } else {
     blog = {};
@@ -54,8 +53,6 @@ function DetailPage({ blogs }) {
   const md = new MarkdownIt({
     html: true,
   });
-
-  console.log(blog.attributes.SEO);
 
   return (
     <Layout>
@@ -117,7 +114,7 @@ function DetailPage({ blogs }) {
                 <article className="content__post">
                   <header>
                     <h1
-                      title={blog.attributes.title}
+                      title={blog?.attributes.title}
                       className="!text-4xl !leading-[1.3] !font-medium mb-4"
                     >
                       {blog.attributes.title}

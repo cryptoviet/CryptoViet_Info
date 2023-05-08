@@ -11,12 +11,17 @@ import useFetch from "../../../hooks/useFetch";
 
 function NavBar() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [analytics, setAnalytics] = useState(false);
 
   const [isOpen, setIsOpen] = useState(false);
 
   const handleClick = () => {
     setIsOpen(!isOpen);
     setMenuOpen(!menuOpen);
+  };
+
+  const handleAnalytics = () => {
+    setAnalytics(!analytics);
   };
 
   let flag = false;
@@ -48,18 +53,112 @@ function NavBar() {
     return listSlug.push(`/vi/analytics/nft/${item.attributes.slug}`);
   });
 
-  
-
   flag = listSlug.includes(pathName) ? true : false;
 
   return (
     <div>
-      <div className="flex items-center text-base z-10  relative font-semibold justify-between p-4">
+      <div className="flex items-center text-base  z-50  relative font-semibold justify-between p-4">
         {/* logo */}
-        <Link to="/">
+        <Link to="/" className="relative z-50">
           <img src="/Logo_header.svg" className="w-3/5 " alt="" />
         </Link>
+        {/* Menu show */}
+        <div
+          id="menu-show"
+          className="uk-menu1 lg:hidden md:hidden  w-full flex "
+        >
+          <div
+            style={{
+              transform: menuOpen ? "translateX(0px) " : "translateX(-600px)",
+            }}
+            className="w-[100%] z-15 uk-menu2  transition-4"
+          >
+            <div className="w-full relative z-1  bg-item"></div>
+            <div className="flex justify-items-start items-center ">
+              <div className="w-full absolute mt-16 h-full top-0 z-50 ">
+                <ul className="font-medium pl-4 w-full h-full bg-[#f0f0f0] pt-12 flex flex-col gap-4 md:p-0 relative">
+                  <li className="">
+                    <Link
+                      onClick={handleAnalytics}
+                      to="/vi/analytics"
+                      className="block py-2 pl-3 pr-4 hover:text-main transition-all  rounded"
+                    >
+                      <span
+                        className={`${
+                          flag && "text-main"
+                        } flex items-center text-text text-xl font-semibold gap-1`}
+                      >
+                        <HiWallet />
+                        Analytics
+                      </span>
+                    </Link>
+                    {analytics && <NavAnalytic />}
+                  </li>
+                  <li>
+                    <Link
+                      to="/vi/analytics/report"
+                      className="block py-2 pl-3 pr-4 hover:text-main transition-all"
+                    >
+                      <span
+                        className={`${
+                          flag && "text-gray hover:text-main"
+                        } flex items-center text-xl text-text font-semibold gap-1`}
+                      >
+                        <RiBarChart2Fill />
+                        Report
+                      </span>
+                    </Link>
+                  </li>
+                  <li className="">
+                    <Link
+                      to="https://data.cryptoviet.info/"
+                      target="_blank"
+                      className="block py-2 pl-3 pr-4 hover:text-main transition-all"
+                    >
+                      <span
+                        className={`${
+                          flag && "text-gray hover:text-main"
+                        } flex items-center text-xl text-text font-semibold gap-1`}
+                      >
+                        <RiGitBranchFill />
+                        Data onchain
+                      </span>
+                    </Link>
+                  </li>
+                  <li className="nft">
+                    <Link
+                      to="/vi/he-sinh-thai-cryptoviet"
+                      className="block py-2 pl-3 pr-4 relative z-10  hover:text-main transition-all"
+                    >
+                      <span
+                        className={` ${
+                          flag && "text-gray hover:text-main"
+                        } flex items-center text-text text-xl font-semibold gap-1 `}
+                      >
+                        <GiSolarSystem />
+                        Ecosystem
+                      </span>
+                    </Link>
+                    <ul className="absolute hidden nft__menu  bg-white text-sm font-semibold shadow-3xl py-4 pr-8 pl-4 rounded-2xl">
+                      {cvEcosystem?.data?.data?.map((item) => (
+                        <li className="mb-2">
+                          <Link
+                            to={`/vi/he-sinh-thai-cryptoviet/${item.attributes.slug}`}
+                            className="hover:text-main "
+                          >
+                            {item.attributes.Name}
+                          </Link>
+                        </li>
+                      ))}
+                    </ul>
+                  </li>
 
+                  <Search />
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
         {/* Menu */}
         <div className="">
           <div
