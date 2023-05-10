@@ -5,6 +5,7 @@ import {
   FaFacebook,
   FaYoutube,
   FaTwitter,
+  FaTiktok,
 } from "react-icons/fa";
 import { HiDocumentMagnifyingGlass } from "react-icons/hi2";
 import useFetch from "../hooks/useFetch";
@@ -125,16 +126,34 @@ function Sidebar() {
         </span>{" "}
         <div className="flex flex-wrap gap-10 py-8">
           <div className=" text-main">
-            <FaTelegramPlane className="text-2xl hover:scale-125 cursor-pointer transition-all hover:opacity-80" />
+            <Link to="https://t.me/nghiencoingroup" target="_blank">
+              <FaTelegramPlane className="text-2xl hover:scale-125 cursor-pointer transition-all hover:opacity-80" />
+            </Link>
           </div>
           <div className=" text-main">
-            <FaFacebook className="text-2xl hover:scale-125 cursor-pointer transition-all hover:opacity-80" />
+            <Link
+              to="https://www.facebook.com/groups/nghiencoingroup"
+              target="_blank"
+            >
+              <FaFacebook className="text-2xl hover:scale-125 cursor-pointer transition-all hover:opacity-80" />
+            </Link>
           </div>
-          <div className=" text-red-500">
-            <FaYoutube className="text-2xl hover:scale-125 cursor-pointer transition-all hover:opacity-80" />
+          <div className="">
+            <Link
+              to="https://www.tiktok.com/@nghiencoinvn?_t=8c8yq6w8fiL&_r=1"
+              target="_blank"
+            >
+              <img
+                src="/tiktok.svg"
+                className="w-[24px] hover:scale-125 cursor-pointer transition-all hover:opacity-80"
+                alt=""
+              />
+            </Link>
           </div>
           <div className=" text-main">
-            <FaTwitter className="text-2xl hover:scale-125 cursor-pointer transition-all hover:opacity-80" />
+            <Link to="https://twitter.com/CryptoVietInfo" target="_blank">
+              <FaTwitter className="text-2xl hover:scale-125 cursor-pointer transition-all hover:opacity-80" />
+            </Link>
           </div>
         </div>
       </div>

@@ -14,7 +14,7 @@ function SearchPage({ blogs }) {
   const keyword = new URLSearchParams(search).get("q");
 
   const filteredBlog = blogs?.data.filter((blog) =>
-    blog.attributes.title.toLowerCase().includes(keyword)
+    blog?.attributes?.title?.toLowerCase().includes(keyword)
   );
 
   // const getAllBlog = blogs.data.map((blog) => {
@@ -48,7 +48,7 @@ function SearchPage({ blogs }) {
                     {arr.map((blog) => (
                       <>
                         <div className="mt-2.5 mb-12 z-10">
-                          <Link to={`/${blog.attributes.slug}`}>
+                          <Link to={`/${blog?.attributes?.slug}`}>
                             <div className="h-[250px] hover__image w-full rounded-[8px] overflow-hidden">
                               <img
                                 className="w-full  h-full  "
@@ -66,14 +66,14 @@ function SearchPage({ blogs }) {
                           </Link>
 
                           <p className="line-clamp-3 ">
-                            {blog.attributes.description}
+                            {blog?.attributes.description}
                           </p>
                           <div className="  flex justify-between mt-4">
                             <span className="flex pb-2 leading-[14px] font-light  text-sm text-text">
                               <FaUserTie className="mr-1" />
                               <span className="block font-semibold">
                                 {
-                                  blog?.attributes.author.data.attributes
+                                  blog?.attributes?.author?.data?.attributes
                                     .FullName
                                 }
                               </span>
@@ -82,7 +82,7 @@ function SearchPage({ blogs }) {
                               <BsFillCalendarEventFill className="mr-1" />
                               <span className="block">
                                 {reverseString(
-                                  blog.attributes.createdAt.substring(0, 10)
+                                  blog?.attributes?.createdAt.substring(0, 10)
                                 )}
                               </span>
                             </span>
